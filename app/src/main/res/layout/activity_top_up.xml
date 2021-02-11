@@ -11,22 +11,19 @@
         android:id="@+id/layout_voucher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_button_voucher"
-        android:layout_centerInParent="false"
         android:layout_marginLeft="70dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="360dp">
 
-        <TextView
+        <EditText
+            android:id="@+id/editvoucher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Your voucher code"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="70dp"
+            android:hint="Your voucher code"
+            android:background="@drawable/custom_button_voucher"
             >
 
-        </TextView>
+        </EditText>
 
     </LinearLayout>
 
@@ -44,6 +41,7 @@
                     android:layout_marginRight="70dp">
 
                     <Button
+                        android:id="@+id/btn_topup_send"
                         android:layout_width="70dp"
                         android:layout_height="30dp"
                         android:background="@drawable/custom_button"
@@ -55,6 +53,7 @@
                     </Button>
 
                     <Button
+                        android:id="@+id/btn_topup_cancel"
                         android:layout_width="70dp"
                         android:layout_height="30dp"
                         android:background="@drawable/cstom_button_cancel_topup"
