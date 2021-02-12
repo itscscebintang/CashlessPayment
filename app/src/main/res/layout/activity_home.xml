@@ -21,11 +21,10 @@
             android:textSize="30dp"
             android:textColor="@color/hitam"
             android:textStyle="bold">
-
         </TextView>
 
         <TextView
-            android:id="@+id/txtsaldo"
+            android:id="@+id/txtsaldo_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="50.000"
@@ -33,7 +32,6 @@
             android:textColor="@color/hitam"
             android:textStyle="bold"
             android:layout_toRightOf="@id/txtrp">
-
         </TextView>
 
         <TextView
@@ -44,7 +42,6 @@
             android:textSize="15dp"
             android:textColor="@color/hitam"
             android:textStyle="bold">
-
         </TextView>
 
         <RelativeLayout
@@ -61,7 +58,6 @@
                 android:text="Pay"
                 android:textColor="@color/putih"
                 android:textStyle="bold">
-
             </TextView>
 
         </RelativeLayout>
@@ -82,20 +78,16 @@
                 android:textStyle="bold"
                 android:textColor="@color/putih"
                 android:layout_centerInParent="true">
-
             </TextView>
 
         </RelativeLayout>
 
     </RelativeLayout>
 
-
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-
-        >
+        android:layout_centerInParent="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,13 +96,60 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
 
-
             <RelativeLayout
-                android:id="@+id/card_cloud"
+                android:id="@+id/card_qr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_home"
-                >
+                android:background="@drawable/shape_home">
+
+                <ImageView
+                    android:id="@+id/image_qr_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/qr_code"></ImageView>
+
+                <LinearLayout
+                    android:id="@+id/myqr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_qr_code"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My"
+                        android:textColor="@color/birumuda"
+                        android:textSize="20dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="QR"
+                        android:textColor="@color/oren"
+                        android:textSize="20dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/myqr"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="gbgsdbggw8rtggr">
+
+                </TextView>
 
             </RelativeLayout>
 
@@ -118,8 +157,58 @@
                 android:id="@+id/card_transfer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_home"
-                android:layout_marginLeft="30dp">
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/shape_home">
+
+                <ImageView
+                    android:id="@+id/image_transfer_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/transfer_balance"></ImageView>
+
+                <LinearLayout
+                    android:id="@+id/transferbalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_transfer_balance"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transfer"
+                        android:textColor="@color/oren"
+                        android:textSize="20dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textColor="@color/hitam"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="3dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/transferbalance"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="gbgsdbggw8rtggr">
+
+                </TextView>
 
             </RelativeLayout>
 
@@ -130,24 +219,120 @@
                 android:background="@drawable/shape_home"
                 android:layout_marginLeft="30dp">
 
+                <ImageView
+                    android:id="@+id/image_promo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/promo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp">
+                </ImageView>
+
+                <LinearLayout
+                    android:id="@+id/promo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/image_promo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Promo"
+                        android:textSize="20dp"
+                        android:textColor="@color/birumuda"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="tion"
+                        android:textSize="20dp"
+                        android:textColor="@color/hitam"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="gbgsdbggw8rtggr"
+                    android:layout_below="@+id/promo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                </TextView>
+
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/card_qr"
+                android:id="@+id/card_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_home"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="50dp">
 
+                <ImageView
+                    android:id="@+id/image_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/history"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp">
+                </ImageView>
+
+                <LinearLayout
+                    android:id="@+id/history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/image_history"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hi"
+                        android:textSize="20dp"
+                        android:textColor="@color/hitam"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="story"
+                        android:textSize="20dp"
+                        android:textColor="@color/birumuda"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="gbgsdbggw8rtggr"
+                    android:layout_below="@+id/history"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                </TextView>
+
             </RelativeLayout>
 
         </LinearLayout>
 
-
-
     </HorizontalScrollView>
-
-
 
 </RelativeLayout>

@@ -24,7 +24,6 @@
                 android:orientation="vertical"
                 android:layout_marginTop="50dp">
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,18 +33,16 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editname"
+                android:id="@+id/editname_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:hint="name">
-
             </EditText>
 
             <TextView
@@ -58,19 +55,16 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editusernamereg"
+                android:id="@+id/editusername_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
-                android:hint="username"
-                >
-
+                android:hint="username">
             </EditText>
 
             <TextView
@@ -83,18 +77,16 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editemail"
+                android:id="@+id/editemail_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:hint="email">
-
             </EditText>
 
             <TextView
@@ -107,18 +99,16 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editktm"
+                android:id="@+id/editktm_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:hint="No. KTM/NIK">
-
             </EditText>
 
             <TextView
@@ -131,11 +121,10 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editpass"
+                android:id="@+id/editpass_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -143,7 +132,6 @@
                 android:layout_marginRight="40dp"
                 android:hint="password"
                 android:inputType="textPassword">
-
             </EditText>
 
             <TextView
@@ -156,11 +144,10 @@
                 android:textSize="18dp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold">
-
             </TextView>
 
             <EditText
-                android:id="@+id/editconfpass"
+                android:id="@+id/editconfpass_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -168,11 +155,10 @@
                 android:layout_marginRight="40dp"
                 android:hint="password"
                 android:inputType="textPassword">
-
             </EditText>
 
             <Button
-                android:id="@+id/btnsignup"
+                android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -184,12 +170,12 @@
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:textColor="@color/putih">
-
             </Button>
+
             </LinearLayout>
 
-
             </androidx.core.widget.NestedScrollView>
+
         </LinearLayout>
 
 </RelativeLayout>

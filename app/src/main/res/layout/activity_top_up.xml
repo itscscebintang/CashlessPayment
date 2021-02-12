@@ -7,64 +7,89 @@
     tools:context=".TopUp"
     android:background="@drawable/tampilantopup">
 
-    <LinearLayout
-        android:id="@+id/layout_voucher"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="360dp">
+        android:background="@drawable/shape_topup"
+        android:layout_centerInParent="true"
+        android:layout_margin="40dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_voucher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="35dp">
+
+            <TextView
+                android:id="@+id/txtvoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voucher"
+                android:textSize="20dp"
+                android:textColor="@color/oren"
+                android:textStyle="bold">
+            </TextView>
+
+            <TextView
+                android:id="@+id/txtcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="code"
+                android:textSize="20dp"
+                android:textColor="@color/putih"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/txtvoucher">
+            </TextView>
+
+        </RelativeLayout>
 
         <EditText
-            android:id="@+id/editvoucher"
+            android:id="@+id/editvoucher_topup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="Your voucher code"
+            android:hint="   Your voucher code"
+            android:layout_below="@id/layout_voucher"
             android:background="@drawable/custom_button_voucher"
-            >
-
+            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
         </EditText>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editvoucher_topup"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp">
 
-            <RelativeLayout
-                android:layout_below="@id/layout_voucher"
-                android:layout_marginTop="20dp"
+            <Button
+                android:id="@+id/btn_send_topup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                >
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_button_send_topup"
+                android:text="Send"
+                android:textAllCaps="false"
+                android:textSize="12dp">
+            </Button>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="70dp">
+            <Button
+                android:id="@+id/btn_cancel_topup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cstom_button_cancel_topup"
+                android:layout_toRightOf="@id/btn_send_topup"
+                android:textAllCaps="false"
+                android:textSize="12dp"
+                android:text="Cancel">
+            </Button>
 
-                    <Button
-                        android:id="@+id/btn_topup_send"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/custom_button"
-                        android:text="Send"
-                        android:textSize="12dp"
-                        android:layout_marginRight="20dp"
-                        android:textAllCaps="false">
+        </RelativeLayout>
 
-                    </Button>
-
-                    <Button
-                        android:id="@+id/btn_topup_cancel"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/cstom_button_cancel_topup"
-                        android:textAllCaps="false"
-                        android:textSize="12dp"
-                        android:text="Cancel">
-
-                    </Button>
-
-                </LinearLayout>
-
-            </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

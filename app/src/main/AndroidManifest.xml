@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TransferSaldo"></activity>
+        <activity android:name=".Pay_Canteen_Confirm"></activity>
+        <activity android:name=".Pay_Canteen_QR" />
+        <activity android:name=".PaymentSuccess" />
+        <activity android:name=".TransferSaldo" />
         <activity android:name=".TopUp" />
         <activity
             android:name=".Register"

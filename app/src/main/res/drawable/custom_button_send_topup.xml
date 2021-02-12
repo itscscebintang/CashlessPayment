@@ -7,7 +7,7 @@
         android:bottomRightRadius="40dp"
         android:topLeftRadius="40dp"
         android:topRightRadius="40dp" />
-    <solid android:color="@color/birudongker" />
+    <solid android:color="@color/oren" />
     <size
         android:width="60dp"
         android:height="40dp" />
