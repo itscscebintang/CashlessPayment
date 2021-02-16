@@ -38,4 +38,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.android.support:design:30.0.3'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+
+    //generate qr code
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
 }

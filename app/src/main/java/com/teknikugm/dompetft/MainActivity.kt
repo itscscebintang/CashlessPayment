@@ -1,5 +1,6 @@
 package com.teknikugm.dompetft
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -9,6 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        btnscan.setOnClickListener(){
+//            startActivity(Intent(this, Pay_Canteen_QR::class.java))
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, Pay_Canteen_QR())
+                .commit()
+        }
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, Home())

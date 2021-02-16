@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.teknikugm.dompetft">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pay_Canteen_Confirm"></activity>
-        <activity android:name=".Pay_Canteen_QR" />
+        <activity android:name=".MyQR"></activity>
+        <activity android:name=".Pay_Canteen_Confirm" />
         <activity android:name=".PaymentSuccess" />
         <activity android:name=".TransferSaldo" />
         <activity android:name=".TopUp" />
