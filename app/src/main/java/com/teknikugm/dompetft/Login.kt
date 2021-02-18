@@ -24,11 +24,8 @@ class Login : AppCompatActivity() {
             startActivity(Intent(this, Register::class.java))
         }
 
-        preferences = getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
-
         val retrofit = RetrofitClient.instance
         myAPI = retrofit.create(API::class.java)
-
         preferences = getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
 
         btn_login.setOnClickListener {

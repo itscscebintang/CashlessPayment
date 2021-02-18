@@ -14,6 +14,7 @@ class Register : AppCompatActivity() {
 
     lateinit var myAPI: API
     var compositeDisposable = CompositeDisposable()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -41,7 +42,6 @@ class Register : AppCompatActivity() {
 //        Kosongkan_teks()
     }
 
-
     override fun onStop() {
         compositeDisposable.clear()
         super.onStop()
@@ -51,4 +51,6 @@ class Register : AppCompatActivity() {
         compositeDisposable.clear()
         super.onDestroy()
     }
+
+
 }
