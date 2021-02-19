@@ -21,7 +21,9 @@
         <activity android:name=".MyQR" />
         <activity android:name=".Pay_Canteen_Confirm" />
         <activity android:name=".PaymentSuccess" />
-        <activity android:name=".TransferSaldo" />
+        <activity android:name=".TransferSaldo"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         <activity android:name=".TopUp" />
         <activity
             android:name=".Register"

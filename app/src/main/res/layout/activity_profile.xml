@@ -31,6 +31,16 @@
 
         </TextView>
 
+        <TextView
+            android:id="@+id/txtsaldo_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Saldo"
+            android:layout_gravity="center"
+            android:textSize="30dp">
+
+        </TextView>
+
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

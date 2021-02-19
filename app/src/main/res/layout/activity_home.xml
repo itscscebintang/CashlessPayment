@@ -7,6 +7,13 @@
     tools:context=".MainActivity"
     android:background="@drawable/tampilanhome">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -83,7 +90,10 @@
 
         </RelativeLayout>
 
+
     </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -338,5 +348,6 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+
 
 </RelativeLayout>

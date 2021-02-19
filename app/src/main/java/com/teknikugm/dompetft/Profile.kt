@@ -8,10 +8,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
-import com.teknikugm.dompetft.retrofit.Constant
+import com.teknikugm.dompetft.retrofit.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import retrofit2.Call
+import retrofit2.Response
 
 class Profile : Fragment() {
 
@@ -39,5 +43,27 @@ class Profile : Fragment() {
                 }
                 .show()
         }
+
+        val a = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "None")
+
+        nampilinSaldo_Profile(a.toString())
+    }
+
+    fun nampilinSaldo_Profile (key : String){
+        lateinit var myAPI: API
+        val retrofit = RetrofitClient.instance
+        myAPI = retrofit.create(API::class.java)
+
+        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
+
+            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
+                Toast.makeText(context, "Gagal", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
+                val a = response.body()?.balance.toString().toInt()
+                txtsaldo_profile.text = Currency.toRupiahFormat2(a).replace("$", "Rp ").replace(",", ".")
+            }
+        })
     }
 }

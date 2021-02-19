@@ -40,6 +40,15 @@
         android:layout_marginBottom="30dp">
 
     </Button>
+
+        <TextView
+            android:id="@+id/saldocontoh_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="0dp"
+            >
+
+        </TextView>
     </LinearLayout>
 
 </LinearLayout>

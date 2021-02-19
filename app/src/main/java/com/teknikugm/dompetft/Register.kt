@@ -1,5 +1,6 @@
 package com.teknikugm.dompetft
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -38,6 +39,7 @@ class Register : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { pesan ->
                 Toast.makeText(this@Register, pesan, Toast.LENGTH_LONG).show()
+                startActivity(Intent(this@Register, Login::class.java))
             })
 //        Kosongkan_teks()
     }

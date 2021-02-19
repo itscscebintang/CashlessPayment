@@ -34,7 +34,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:hint="No. KTM or NIK"
-                    android:layout_below="@id/txtidnumber">
+                    android:layout_below="@id/txtidnumber"
+                    android:maxLines="1">
                 </EditText>
 
                 <TextView
@@ -47,7 +48,8 @@
                     android:textColor="@color/hitam"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    android:layout_below="@+id/editidnumber_transfer">
+                    android:layout_below="@+id/editidnumber_transfer"
+                    >
                 </TextView>
 
                 <EditText
@@ -56,7 +58,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:hint="Min. Rp 5.000"
-                    android:layout_below="@id/txtbalance">
+                    android:layout_below="@id/txtbalance"
+                    android:inputType="number"
+                    android:maxLines="1">
+
                 </EditText>
 
         </RelativeLayout>
@@ -96,6 +101,16 @@
                 </Button>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/saldo_contoh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Saldo"
+                android:textSize="0dp"
+                android:layout_alignParentBottom="true">
+
+            </TextView>
 
         </RelativeLayout>
 
