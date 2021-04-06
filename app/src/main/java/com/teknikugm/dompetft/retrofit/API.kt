@@ -18,10 +18,11 @@ interface API {
     @FormUrlEncoded
     fun registeruser (@Field("username") username:String,
                       @Field("name") name:String,
-                      @Field("password") password:String): Observable<String>
+                      @Field("password") password:String,
+                      @Field("email") email:String,
+                      @Field("nik") nik:String): Observable<String>
 
     @POST("index.php/User/saldo_c/{key}")
     fun getsaldo(
-        @Path("key") key: String?
-    ): retrofit2.Call<ResponseSaldo>
+        @Path("key") key: String?): retrofit2.Call<ResponseSaldo>
 }

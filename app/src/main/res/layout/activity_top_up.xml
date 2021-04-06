@@ -5,21 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TopUp"
-    android:background="@drawable/tampilantopup">
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_topup"
-        android:layout_centerInParent="true"
-        android:layout_margin="40dp">
+    android:background="@drawable/tampilan_top_up">
 
         <RelativeLayout
             android:id="@+id/layout_voucher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="35dp">
+            android:layout_marginTop="300dp"
+            android:layout_marginLeft="70dp">
 
             <TextView
                 android:id="@+id/txtvoucher"
@@ -28,7 +21,7 @@
                 android:text="Voucher"
                 android:textSize="20dp"
                 android:textColor="@color/oren"
-                android:textStyle="bold">
+                android:fontFamily="@font/poppins_semi">
             </TextView>
 
             <TextView
@@ -37,8 +30,9 @@
                 android:layout_height="wrap_content"
                 android:text="code"
                 android:textSize="20dp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@color/putih"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_semi"
                 android:layout_toRightOf="@id/txtvoucher">
             </TextView>
 
@@ -49,13 +43,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="   Your voucher code"
+            android:hint="Your voucher code"
             android:layout_below="@id/layout_voucher"
-            android:background="@drawable/custom_button_voucher"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp">
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp">
         </EditText>
 
         <RelativeLayout
@@ -63,16 +56,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editvoucher_topup"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="15dp">
 
             <Button
                 android:id="@+id/btn_send_topup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/custom_button_send_topup"
                 android:text="Send"
+                android:fontFamily="@font/poppins_medium"
                 android:textAllCaps="false"
                 android:textSize="12dp">
             </Button>
@@ -80,16 +74,15 @@
             <Button
                 android:id="@+id/btn_cancel_topup"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/cstom_button_cancel_topup"
                 android:layout_toRightOf="@id/btn_send_topup"
                 android:textAllCaps="false"
                 android:textSize="12dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="Cancel">
             </Button>
 
         </RelativeLayout>
-
-    </RelativeLayout>
 
 </RelativeLayout>

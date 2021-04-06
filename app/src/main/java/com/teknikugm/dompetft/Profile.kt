@@ -32,14 +32,13 @@ class Profile : Fragment() {
 
         btn_logout.setOnClickListener(){
 
-            AlertDialog.Builder(context)
-                .setMessage("Close?")
-                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+            AlertDialog.Builder(context )
+                .setMessage("Yakin untuk logout?")
+                    .setPositiveButton("Ya") { dialog, whichButton ->
                     context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.edit{clear()}
                     startActivity(Intent(context, Login::class.java))
                 }
-                .setNegativeButton(android.R.string.cancel) { dialog, whichButton ->
-
+                .setNegativeButton("Batal") { dialog, whichButton ->
                 }
                 .show()
         }
@@ -54,16 +53,5 @@ class Profile : Fragment() {
         val retrofit = RetrofitClient.instance
         myAPI = retrofit.create(API::class.java)
 
-        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
-
-            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
-                Toast.makeText(context, "Gagal", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
-                val a = response.body()?.balance.toString().toInt()
-                txtsaldo_profile.text = Currency.toRupiahFormat2(a).replace("$", "Rp ").replace(",", ".")
-            }
-        })
     }
 }

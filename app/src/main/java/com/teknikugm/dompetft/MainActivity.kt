@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnscan.setOnClickListener(){
-//            startActivity(Intent(this, Pay_Canteen_QR::class.java))
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, Pay_Canteen_QR())
                 .commit()
@@ -49,11 +48,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         AlertDialog.Builder(this)
-            .setMessage("Close?")
-            .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+            .setMessage("Tutup Aplikasi DompetFT?")
+            .setPositiveButton("Ya") { dialog, whichButton ->
                 finishAffinity()
             }
-            .setNegativeButton(android.R.string.cancel) { dialog, whichButton ->
+            .setNegativeButton("Batal") { dialog, whichButton ->
 
             }
             .show()

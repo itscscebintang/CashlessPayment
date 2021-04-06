@@ -14,7 +14,7 @@
 
   <androidx.coordinatorlayout.widget.CoordinatorLayout
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="120dp"
       android:layout_alignParentBottom="true">
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -29,10 +29,12 @@
       <com.google.android.material.bottomnavigation.BottomNavigationView
           android:id="@+id/bottomnav"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="60dp"
           android:layout_alignParentBottom="true"
           app:menu="@menu/button_navigation"
-          >
+          app:itemIconTint="@drawable/navigation_selector"
+          app:itemIconSize="30dp"
+          app:labelVisibilityMode="unlabeled">
       </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -42,9 +44,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/home"
         app:layout_anchor="@id/bottomapp"
-        />
+        android:backgroundTint="@color/oren"
+        app:borderWidth="0dp"
+        app:fabCustomSize="60dp"
+        android:src="@drawable/scan_qr" />
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

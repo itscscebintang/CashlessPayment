@@ -145,5 +145,4 @@ class Pay_Canteen_QR : Fragment(){
             }
         })
     }
-
 }

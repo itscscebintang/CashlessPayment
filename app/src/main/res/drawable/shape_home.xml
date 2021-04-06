@@ -9,5 +9,5 @@ android:shape="rectangle">
 <solid android:color="@color/putih" />
 <size
     android:width="200dp"
-    android:height="250dp" />
+    android:height="280dp" />
 </shape>

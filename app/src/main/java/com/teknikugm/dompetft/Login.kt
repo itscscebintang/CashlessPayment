@@ -39,7 +39,6 @@ class Login : AppCompatActivity() {
                 return@setOnClickListener
             } else
                 cekLogin(editusername_login.text.toString(), editpassword_login.text.toString())
-//                Kosongkan_teks()
         }
     }
 

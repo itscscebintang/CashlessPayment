@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_home.btn_topup_home
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -23,6 +25,14 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btn_pay_home.setOnClickListener(){
+            startActivity(Intent(context, Pay_Canteen_QR::class.java))
+        }
+
+        btn_topup_home.setOnClickListener(){
+            startActivity(Intent(context, TopUp::class.java))
+        }
 
         card_qr.setOnClickListener(){
             startActivity(Intent(context, MyQR::class.java))
