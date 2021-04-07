@@ -63,8 +63,8 @@ class Home : Fragment() {
             }
 
             override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
-                val a = response.body()?.balance.toString().toInt()
-                txtsaldo_home.text = Currency.toRupiahFormat2(a).replace("$", "").replace(",", ".")
+//                val a = response.body()?.balance.toString().toInt()
+//                txtsaldo_home.text = Currency.toRupiahFormat2(a).replace("$", "").replace(",", ".")
 
             }
         })

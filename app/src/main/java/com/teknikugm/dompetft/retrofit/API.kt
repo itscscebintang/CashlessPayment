@@ -25,4 +25,14 @@ interface API {
     @POST("index.php/User/saldo_c/{key}")
     fun getsaldo(
         @Path("key") key: String?): retrofit2.Call<ResponseSaldo>
+
+    @FormUrlEncoded
+    @POST("index.php/Transaksi_topup/send_topup")
+    fun topUpSaldo(
+
+        @Field("jumlah_topup") finalTopUp: Int,
+        @Field("username") username: String?,
+        @Field("random_topup") randomNumber: Int
+
+    ) : Call<Response_Topup>
 }

@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
-            android:layout_marginLeft="70dp">
+            android:layout_marginLeft="80dp">
 
             <TextView
                 android:id="@+id/txtvoucher"
@@ -39,7 +39,7 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/editvoucher_topup"
+            android:id="@+id/topup_saldo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -47,17 +47,17 @@
             android:layout_below="@id/layout_voucher"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="85dp"
             android:layout_marginRight="70dp">
         </EditText>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editvoucher_topup"
+            android:layout_below="@id/topup_saldo"
             android:layout_alignParentRight="true"
             android:layout_marginRight="70dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/btn_send_topup"
