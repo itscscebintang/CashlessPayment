@@ -14,7 +14,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".contoh_cardview"></activity>
+        <activity android:name=".pembayaran.Promo"></activity>
+        <activity android:name=".pembayaran.PromoAdapter" />
+        <activity android:name=".Transaksi_Pesanan" />
+        <activity android:name=".Promo" />
         <activity
             android:name=".MyQR"
             android:screenOrientation="portrait" />

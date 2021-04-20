@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Transaksi_Pesanan"
+    android:background="@drawable/tampilan_transaksi">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay_for_canteen"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="70dp"
+        android:fontFamily="@font/poppins_semi"
+        android:textColor="@color/putih"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Orders : "
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="20sp"
+        android:layout_marginTop="140dp"
+        android:textColor="@color/hitam"
+        android:layout_marginStart="20dp">
+
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pesanan"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="190dp"
+        app:cardCornerRadius="20sp">
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_promo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button_profile"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/pesanan"
+        android:layout_marginTop="30dp"
+        android:text="Check here for promos!"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="16sp"
+        android:textColor="@color/putih"
+        android:elevation="3dp">
+
+    </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Promo Anda : Rp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/hitam">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/total_promo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="5.000"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="130dp">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Order : Rp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="16sp"
+        android:textColor="@color/hitam">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="20.000"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="150dp"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="16sp"
+        android:textColor="@color/hitam">
+    </TextView>
+
+    <Button
+        android:id="@+id/btn_pay_pesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="Pay"
+        android:textAllCaps="false"
+        android:textColor="@color/putih"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="16sp">
+
+    </Button>
+
+</RelativeLayout>

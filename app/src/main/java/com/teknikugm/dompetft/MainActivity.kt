@@ -40,6 +40,13 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
 
+                R.id.pay -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, Transaksi_Pesanan())
+                        .commit()
+                    return@setOnNavigationItemSelectedListener true
+                }
+
             }
             false
         }

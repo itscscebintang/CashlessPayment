@@ -53,6 +53,7 @@ class Register : AppCompatActivity() {
                     editktm_register.text.toString(),
                 editpass_register.text.toString()
             )
+            
         }
     }
 

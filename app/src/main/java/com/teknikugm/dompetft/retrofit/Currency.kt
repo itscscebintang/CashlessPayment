@@ -7,7 +7,6 @@ import java.util.*
 
 object Currency {
 
-
     fun toRupiahFormat2(nominal: Int): String {
         val format = NumberFormat.getCurrencyInstance()
         format.maximumFractionDigits = 0

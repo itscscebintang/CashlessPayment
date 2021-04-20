@@ -9,4 +9,8 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="available_promos">Available Promos</string>
+    <string name="my_promo">My Promo</string>
+    <string name="potongan_sebesar_rp">Potongan sebesar Rp</string>
+    <string name="pay_for_canteen">Pay for Canteen</string>
 </resources>

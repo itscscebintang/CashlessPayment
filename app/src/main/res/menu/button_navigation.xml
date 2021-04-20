@@ -14,4 +14,9 @@
         android:id="@+id/profile"
         android:icon="@drawable/profile"
         android:title="" />
+
+    <item
+        android:id="@+id/pay"
+        android:icon="@drawable/scan_qr"
+        android:title="" />
 </menu>

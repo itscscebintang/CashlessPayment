@@ -1,18 +1,18 @@
 package com.teknikugm.dompetft.retrofit
 
+import com.teknikugm.dompetft.pembayaran.ResponsePromo
 import io.reactivex.Observable
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface API {
 
     @POST("index.php/User/login")
     @FormUrlEncoded
-    fun loginUser (@Field("username") username:String,
-                   @Field("password") password:String): Call<ResponseLogin>
+    fun loginUser (
+        @Field("username") username:String,
+        @Field("password") password:String
+    ): Call<ResponseLogin>
 
     @POST("appkantin/register.php")
     @FormUrlEncoded
@@ -35,4 +35,7 @@ interface API {
         @Field("random_topup") randomNumber: Int
 
     ) : Call<Response_Topup>
+
+    @GET("index.php/Transaksi_promo/api_list_promo")
+    fun ambil_promo() : Call<ResponsePromo>
 }

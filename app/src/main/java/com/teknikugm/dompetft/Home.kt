@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.teknikugm.dompetft.pembayaran.Promo
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home.btn_topup_home
@@ -27,7 +28,7 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btn_pay_home.setOnClickListener(){
-            startActivity(Intent(context, Pay_Canteen_QR::class.java))
+            startActivity(Intent(context, Transaksi_Pesanan::class.java))
         }
 
         btn_topup_home.setOnClickListener(){
@@ -40,6 +41,10 @@ class Home : Fragment() {
 
         card_transfer.setOnClickListener(){
             startActivity(Intent(context, TransferSaldo::class.java))
+        }
+
+        card_promo.setOnClickListener(){
+            startActivity(Intent(context, Promo::class.java))
         }
 
         val b = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "none")
