@@ -13,7 +13,7 @@ object RetrofitClient {
     val instance: Retrofit
         get (){
             if (retrofit == null){
-                retrofit = Retrofit.Builder().baseUrl("http://192.168.18.158/Kantin/")
+                retrofit = Retrofit.Builder().baseUrl("http://192.168.1.107/Kantin/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(getOkHttp())
