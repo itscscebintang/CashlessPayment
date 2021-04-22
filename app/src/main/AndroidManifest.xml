@@ -15,9 +15,11 @@
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
         <activity android:name=".pembayaran.Promo"></activity>
-        <activity android:name=".pembayaran.PromoAdapter" />
-        <activity android:name=".Transaksi_Pesanan" />
-        <activity android:name=".Promo" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="android:screenOrientation"
+            android:stateNotNeeded="true"/>
         <activity
             android:name=".MyQR"
             android:screenOrientation="portrait" />
