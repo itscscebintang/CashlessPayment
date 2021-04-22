@@ -1,21 +1,17 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
 import android.content.ContextWrapper
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_profile.*
-import retrofit2.Call
-import retrofit2.Response
 
 class Profile : Fragment() {
 

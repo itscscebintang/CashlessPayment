@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile"
-    android:background="@drawable/tampilanprofile"
-    android:orientation="vertical">
+    tools:context=".utama.Profile"
+    android:background="@drawable/tampilan_profile">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -41,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="150dp">
+        android:layout_centerInParent="true">
 
         <TextView
             android:id="@+id/txtusername_profile"
@@ -81,13 +80,11 @@
                android:layout_marginLeft="20dp"
                android:layout_marginRight="20dp">
 
-
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="Name"
-                   android:textSize="18dp"
-                   >
+                   android:textSize="18dp">
 
                </TextView>
 
@@ -98,12 +95,11 @@
                    android:text="Ashlea Kennedy"
                    android:textSize="15dp"
                    android:layout_alignParentRight="true"
-
                    >
 
                </TextView>
-           </RelativeLayout>
 
+           </RelativeLayout>
 
        </RelativeLayout>
 
@@ -122,13 +118,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="No. KTM / NIK"
-                    android:textSize="18dp"
-                    >
+                    android:textSize="18dp">
 
                 </TextView>
 
@@ -138,13 +132,11 @@
                     android:layout_height="wrap_content"
                     android:text="123456789"
                     android:textSize="15dp"
-                    android:layout_alignParentRight="true"
-
-                    >
+                    android:layout_alignParentRight="true">
 
                 </TextView>
-            </RelativeLayout>
 
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -163,13 +155,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textSize="18dp"
-                    >
+                    android:textSize="18dp">
 
                 </TextView>
 
@@ -182,8 +172,8 @@
                     android:layout_alignParentRight="true">
 
                 </TextView>
-            </RelativeLayout>
 
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -193,7 +183,7 @@
             android:layout_height="wrap_content"
             android:text="LOGOUT"
             android:textStyle="bold"
-            android:background="@drawable/custom_button"
+            android:background="@drawable/tombol_birudongker"
             android:textColor="@color/putih"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="40dp"
@@ -203,5 +193,4 @@
 
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

@@ -1,6 +1,6 @@
 package com.teknikugm.dompetft.retrofit
 
-import com.teknikugm.dompetft.MainActivity
+import com.teknikugm.dompetft.utama.MainActivity
 
 object Constant {
 

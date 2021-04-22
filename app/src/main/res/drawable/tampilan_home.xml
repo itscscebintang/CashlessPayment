@@ -11,14 +11,11 @@
         android:fillColor="#fff"/>
     <path
         android:fillColor="#FF000000"
-        android:pathData="M0,-4L414,-4L414,741L0,741Z"
+        android:pathData="M0,0h414v745h-414z"
         android:strokeAlpha="0.04"
         android:fillAlpha="0.04"/>
     <path
-        android:pathData="M1,-70L238,-70A68,68 0,0 1,306 -2L306,39A68,68 0,0 1,238 107L1,107A68,68 0,0 1,-67 39L-67,-2A68,68 0,0 1,1 -70z"
+        android:pathData="M61,181L353,181a61,61 0,0 1,61 61L414,508a61,61 0,0 1,-61 61L61,569A61,61 0,0 1,0 508L0,242A61,61 0,0 1,61 181Z"
         android:fillColor="#0963a0"/>
-    <path
-        android:pathData="M44,605L370,605A44,44 0,0 1,414 649L414,728A44,44 0,0 1,370 772L44,772A44,44 0,0 1,0 728L0,649A44,44 0,0 1,44 605z"
-        android:fillColor="#fff"/>
   </group>
 </vector>

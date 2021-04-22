@@ -1,9 +1,7 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.app.Activity
-import android.content.ContextWrapper
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,11 +10,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.CaptureActivity
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.pembayaran.DataItem
 import com.teknikugm.dompetft.pembayaran.Promo
-import com.teknikugm.dompetft.retrofit.Constant
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*
 import kotlinx.android.synthetic.main.activity_transaksi__pesanan.*
 
 class Transaksi_Pesanan : Fragment() {

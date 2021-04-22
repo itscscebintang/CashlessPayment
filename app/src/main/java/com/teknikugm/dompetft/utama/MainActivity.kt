@@ -1,12 +1,9 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
-import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.graphics.drawable.GradientDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import com.teknikugm.dompetft.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

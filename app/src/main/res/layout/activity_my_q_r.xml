@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyQR"
-    android:background="@drawable/tampilan_myqr">
+    tools:context=".utama.MyQR"
+    android:background="@drawable/tampilan_semua">
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_below="@id/img_myqr"
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"
-        android:textSize="15dp"
+        android:textSize="16sp"
         android:text="Scan MyQR Code to Transfer Balance!"
         android:shadowColor="@color/hitam"
         android:fontFamily="@font/poppins_semi">

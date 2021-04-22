@@ -1,4 +1,4 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import com.journeyapps.barcodescanner.CaptureActivity
 

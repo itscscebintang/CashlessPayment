@@ -1,4 +1,4 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.content.ContextWrapper
 import android.graphics.Bitmap
@@ -9,6 +9,7 @@ import android.util.Log
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.Constant
 import kotlinx.android.synthetic.main.activity_my_q_r.*
 

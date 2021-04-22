@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/tampilanhome">
+    tools:context=".utama.MainActivity"
+    android:background="@drawable/tampilan_home">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
@@ -186,11 +186,11 @@
 
                 <ImageView
                     android:id="@+id/image_transfer_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="25dp"
-                    android:background="@drawable/transfer_balance">
+                    android:background="@drawable/money_transfer">
 
                 </ImageView>
 

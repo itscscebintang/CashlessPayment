@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopUp"
-    android:background="@drawable/tampilan_top_up">
+    tools:context=".utama.TopUp"
+    android:background="@drawable/tampilan_semua">
 
         <RelativeLayout
             android:id="@+id/layout_voucher"

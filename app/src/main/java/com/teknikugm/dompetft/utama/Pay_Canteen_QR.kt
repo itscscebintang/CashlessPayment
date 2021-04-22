@@ -1,24 +1,22 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContextWrapper
 import android.content.Intent
 import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.CaptureActivity
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*
-import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import retrofit2.Call
 import retrofit2.Response
 

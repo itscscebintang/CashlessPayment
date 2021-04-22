@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".utama.Login"
     android:background="@drawable/tampilan_login">
 
     <LinearLayout
@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="80dp"
-        android:layout_marginLeft="40dp"
-        >
+        android:layout_marginLeft="40dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,15 +36,14 @@
             android:textStyle="bold">
 
         </TextView>
-    </LinearLayout>
 
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:layout_marginTop="150dp">
-
 
         <EditText
             android:id="@+id/editusername_login"
@@ -72,7 +70,7 @@
             android:layout_below="@id/editusername_login"
             android:layout_marginTop="30dp">
         </EditText>
-        
+
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
@@ -84,7 +82,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             android:layout_below="@id/editpassword_login"
-            android:background="@drawable/custom_button"
+            android:background="@drawable/tombol_birudongker"
             android:textColor="@color/putih"
             android:layout_marginTop="60dp">
         </Button>
@@ -102,20 +100,20 @@
             >
         </TextView>
 
-            <TextView
-                android:id="@+id/txtsignup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:textColorHint="@color/birudongker"
-                android:text="Sign Up"
-                android:fontFamily="@font/poppins_bold"
-                android:layout_centerInParent="true"
-                android:layout_below="@id/txtfirst"
-                android:textColor="@color/birudongker">
+        <TextView
+            android:id="@+id/txtsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:textColorHint="@color/birudongker"
+            android:text="Sign Up"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/txtfirst"
+            android:textColor="@color/birudongker">
 
-            </TextView>
+        </TextView>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

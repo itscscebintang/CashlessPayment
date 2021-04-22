@@ -4,9 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
+    tools:context=".utama.Register"
     android:fitsSystemWindows="true"
-    android:background="@drawable/tampilansignup">
+    android:background="@drawable/tampilan_full">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -200,13 +200,14 @@
                         android:layout_marginTop="50dp"
                         android:layout_marginRight="40dp"
                         android:layout_marginBottom="70dp"
-                        android:background="@drawable/custom_button"
+                        android:background="@drawable/tombol_birudongker"
                         android:fontFamily="@font/poppins_bold"
                         android:text="Sign Up"
                         android:textColor="@color/putih"
                         android:textSize="16dp">
 
                     </Button>
+
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>

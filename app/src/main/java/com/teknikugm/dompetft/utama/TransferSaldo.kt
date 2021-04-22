@@ -1,14 +1,14 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContextWrapper
-import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*

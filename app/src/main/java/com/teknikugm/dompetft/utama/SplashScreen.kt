@@ -1,11 +1,11 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
-import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.Constant
 
 class SplashScreen : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.teknikugm.dompetft
+package com.teknikugm.dompetft.utama
 
 import android.content.Context
 import android.content.Intent
@@ -7,8 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.content.edit
+import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
-import kotlinx.android.synthetic.main.activity_login2.*
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Response
 
 class Login : AppCompatActivity() {
@@ -18,7 +19,7 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login2)
+        setContentView(R.layout.activity_login)
 
         txtsignup.setOnClickListener(){
             startActivity(Intent(this, Register::class.java))

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Transaksi_Pesanan"
-    android:background="@drawable/tampilan_transaksi">
+    tools:context=".utama.Transaksi_Pesanan"
+    android:background="@drawable/tampilan_semua">
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
         android:id="@+id/btn_pay_pesanan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/tombol_birudongker"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="45dp"
         android:layout_alignParentRight="true"

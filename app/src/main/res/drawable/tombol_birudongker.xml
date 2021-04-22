@@ -8,8 +8,5 @@
         android:topLeftRadius="40dp"
         android:topRightRadius="40dp" />
     <solid android:color="@color/birudongker" />
-    <size
-        android:width="60dp"
-        android:height="40dp" />
 
 </shape>

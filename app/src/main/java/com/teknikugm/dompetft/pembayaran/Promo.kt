@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.API
 import com.teknikugm.dompetft.retrofit.RetrofitClient
-import kotlinx.android.synthetic.main.activity_promo2.*
+import kotlinx.android.synthetic.main.activity_promo.*
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
@@ -18,7 +18,7 @@ import javax.security.auth.callback.Callback
 class Promo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_promo2)
+        setContentView(R.layout.activity_promo)
 
         list_promo()
     }

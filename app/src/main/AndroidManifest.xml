@@ -14,30 +14,31 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".pembayaran.Promo"></activity>
+        <activity android:name=".Scanner"></activity>
+        <activity android:name=".pembayaran.Promo" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true"/>
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
         <activity
-            android:name=".MyQR"
+            android:name=".utama.MyQR"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TransferSaldo"
+            android:name=".utama.TransferSaldo"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TopUp"
+            android:name=".utama.TopUp"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Register"
+            android:name=".utama.Register"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".Login"
+            android:name=".utama.Login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".utama.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".utama.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 
