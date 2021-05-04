@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tampilan_semua">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay for Canteen"
+        android:textColor="@color/putih"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="20sp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="35dp">
+
+    </TextView>
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scanner_view"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="130dp"
+        app:autoFocusButtonColor="@color/birumuda"
+        app:autoFocusButtonVisible="true"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:flashButtonColor="@color/birumuda"
+        app:flashButtonVisible="true"
+        app:frameColor="@color/birudongker"
+        app:frameCornersSize="40dp"
+        app:frameCornersRadius="20dp"
+        app:frameAspectRatioWidth="1"
+        app:frameAspectRatioHeight="1"
+        app:frameSize="0.9"
+        app:frameThickness="5dp"
+        app:maskColor="@color/background"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Scan QR Code to Transfer Your Balance to A Friend!"
+        android:layout_below="@id/scanner_view"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_semi"
+        android:textColor="@color/hitam"
+        android:textSize="20sp"
+        android:textAlignment="center">
+
+    </TextView>
+
+</RelativeLayout>

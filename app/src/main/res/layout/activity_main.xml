@@ -33,7 +33,7 @@
           android:layout_alignParentBottom="true"
           app:menu="@menu/button_navigation"
           app:itemIconTint="@drawable/navigation_selector"
-          app:itemIconSize="30dp"
+          app:itemIconSize="25dp"
           app:labelVisibilityMode="unlabeled">
       </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -48,7 +48,7 @@
         android:backgroundTint="@color/oren"
         app:borderWidth="0dp"
         app:fabCustomSize="60dp"
-        android:src="@drawable/scan_qr" />
+        android:src="@drawable/icon_scan_qr" />
 
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".utama.TransferSaldo"
-    android:background="@drawable/tampilan_semua">
+    android:background="@drawable/tampilan_transafer">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,14 +13,13 @@
         android:text="Transfer Balance"
         android:textColor="@color/putih"
         android:fontFamily="@font/poppins_semi"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="70dp">
 
     </TextView>
 
     <LinearLayout
-        android:id="@+id/tulisan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -36,7 +35,7 @@
             <ImageView
                 android:layout_width="80sp"
                 android:layout_height="80sp"
-                android:src="@drawable/money_transfer">
+                android:src="@drawable/icon_money_transfer">
             </ImageView>
 
             <LinearLayout
@@ -44,34 +43,34 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Transfer"
-                    android:textSize="20dp"
-                    android:textColor="@color/oren"
-                    android:fontFamily="@font/poppins_medium">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp">
 
-                </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Transfer"
+                        android:textSize="20dp"
+                        android:textColor="@color/oren"
+                        android:fontFamily="@font/poppins_medium">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="your balance"
-                    android:textColor="@color/hitam"
-                    android:layout_marginLeft="5dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="20dp">
+                    </TextView>
 
-                </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="your balance"
+                        android:textColor="@color/hitam"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="20dp">
 
-            </LinearLayout>
+                    </TextView>
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -89,132 +88,123 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fill out the recipient's info below!"
+            android:layout_marginTop="70dp"
+            android:textSize="20dp"
+            android:layout_marginLeft="70dp"
+            android:textColor="@color/putih"
+            android:fontFamily="@font/poppins_medium">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fill out the recipient's info below!"
-        android:layout_marginTop="40dp"
-        android:textSize="20dp"
-        android:layout_marginLeft="70dp"
-        android:textColor="@color/putih"
-        android:fontFamily="@font/poppins_medium"
-        android:layout_below="@id/tulisan">
-
-    </TextView>
+        </TextView>
 
         <RelativeLayout
             android:id="@+id/layout_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_card_transfer"
-            android:layout_marginLeft="70dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="300dp">
-
-                <TextView
-                    android:id="@+id/txtidnumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Username"
-                    android:textColor="@color/hitam"
-                    android:textSize="18dp"
-                    android:fontFamily="@font/poppins_medium">
-                </TextView>
-
-                <EditText
-                    android:id="@+id/editidnumber_transfer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:hint="Username"
-                    android:backgroundTint="@color/birudongker"
-                    android:layout_below="@id/txtidnumber"
-                    android:maxLines="1">
-                </EditText>
-
-                <TextView
-                    android:id="@+id/txtbalance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Balance amount"
-                    android:textColor="@color/hitam"
-                    android:textSize="18dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_below="@+id/editidnumber_transfer"
-                    >
-                </TextView>
-
-                <EditText
-                    android:id="@+id/editbalance_transfer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:hint="Min. Rp 5.000"
-                    android:backgroundTint="@color/birudongker"
-                    android:layout_below="@id/txtbalance"
-                    android:inputType="number"
-                    android:maxLines="1">
-
-                </EditText>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_balance"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_send_transfer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Send"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/putih"
-                    android:background="@drawable/tombol_birudongker"
-                    android:textAllCaps="false">
-                </Button>
-
-                <Button
-                    android:id="@+id/btn_cancel_transfer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cancel"
-                    android:fontFamily="@font/poppins_medium"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/cstom_button_cancel_topup"
-                    android:textAllCaps="false">
-
-                </Button>
-
-            </LinearLayout>
+            android:background="@drawable/tombol_putih"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="30dp">
 
             <TextView
-                android:id="@+id/saldo_contoh"
+                android:id="@+id/txtidnumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Saldo"
-                android:textSize="0dp"
-                android:layout_alignParentBottom="true">
-
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Username"
+                android:textColor="@color/hitam"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins_medium">
             </TextView>
 
+            <EditText
+                android:id="@+id/editidnumber_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Username"
+                android:backgroundTint="@color/birudongker"
+                android:layout_below="@id/txtidnumber"
+                android:maxLines="1">
+            </EditText>
+
+            <TextView
+                android:id="@+id/txtbalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:text="Balance amount"
+                android:textColor="@color/hitam"
+                android:textSize="18dp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_below="@+id/editidnumber_transfer">
+            </TextView>
+
+            <EditText
+                android:id="@+id/editbalance_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="30dp"
+                android:hint="Min. Rp 5.000"
+                android:backgroundTint="@color/birudongker"
+                android:layout_below="@id/txtbalance"
+                android:inputType="number"
+                android:maxLines="1">
+
+            </EditText>
+
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btn_send_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/putih"
+                android:background="@drawable/tombol_birudongker"
+                android:textAllCaps="false">
+            </Button>
+
+            <Button
+                android:id="@+id/btn_cancel_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/tombol_putih"
+                android:textAllCaps="false">
+
+            </Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/saldo_contoh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Saldo"
+        android:textSize="0dp"
+        android:layout_alignParentBottom="true">
+    </TextView>
 
 </RelativeLayout>

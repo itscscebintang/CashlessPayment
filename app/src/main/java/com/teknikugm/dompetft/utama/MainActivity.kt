@@ -1,9 +1,11 @@
 package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.teknikugm.dompetft.R
+import com.teknikugm.dompetft.pembayaran.Scanner
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,9 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnscan.setOnClickListener(){
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, Pay_Canteen_QR())
-                .commit()
+            startActivity(Intent(this,Scanner::class.java))
         }
 
         supportFragmentManager.beginTransaction()
@@ -33,13 +33,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.profile -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, Profile())
-                        .commit()
-                    return@setOnNavigationItemSelectedListener true
-                }
-
-                R.id.pay -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.container, Transaksi_Pesanan())
                         .commit()
                     return@setOnNavigationItemSelectedListener true
                 }

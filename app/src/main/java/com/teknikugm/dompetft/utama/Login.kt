@@ -50,7 +50,7 @@ class Login : AppCompatActivity() {
                 override fun onFailure(call: retrofit2.Call<ResponseLogin>, t: Throwable) {
                     Toast.makeText(
                         this@Login,
-                        "Username dan Password salah !",
+                        "Username dan Password salah!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

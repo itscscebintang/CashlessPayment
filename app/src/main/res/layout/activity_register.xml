@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign"
-            android:textSize="38dp"
+            android:textSize="38sp"
             android:textColor="@color/birumuda"
             android:fontFamily="@font/poppins_bold">
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Up"
-            android:textSize="38dp"
+            android:textSize="38sp"
             android:textColor="@color/oren"
             android:fontFamily="@font/poppins_bold"
             android:layout_marginLeft="5dp">
@@ -39,7 +39,7 @@
     </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/shape_card"
+            android:background="@drawable/shape_lurus"
             android:layout_marginTop="140dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

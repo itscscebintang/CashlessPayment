@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pay_for_canteen"
+        android:text="Transfer Balance"
         android:layout_marginTop="35dp"
         android:layout_marginLeft="70dp"
         android:fontFamily="@font/poppins_semi"

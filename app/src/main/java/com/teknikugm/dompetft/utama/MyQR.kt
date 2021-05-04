@@ -35,7 +35,7 @@ class MyQR : AppCompatActivity() {
             val bitMatrix = codeWriter.encode(text, BarcodeFormat.QR_CODE, width, height)
             for (x in 0 until width) {
                 for (y in 0 until height) {
-                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
+                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else resources.getColor(R.color.background))
                 }
             }
         } catch (e: WriterException) { Log.d(TAG, "generateQRCode: ${e.message}") }

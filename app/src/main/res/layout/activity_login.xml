@@ -79,7 +79,7 @@
             android:layout_marginRight="40dp"
             android:text="LOGIN"
             android:fontFamily="@font/poppins_bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:layout_below="@id/editpassword_login"
             android:background="@drawable/tombol_birudongker"
