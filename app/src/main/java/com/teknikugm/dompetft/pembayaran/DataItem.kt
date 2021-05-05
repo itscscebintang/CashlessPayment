@@ -12,5 +12,12 @@ data class DataItem(
     val idPromo: String? = null,
 
     @field:SerializedName("jumlah_promo")
-    val jumlahPromo: String? = null
+    val jumlahPromo: String? = null,
+
+    @field:SerializedName("min_belanja")
+    val minBelanja: String? = null,
+
+    @field:SerializedName("status_promo")
+    val statusPromo: String? = null
+
 ) : Serializable

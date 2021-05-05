@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".pembayaran.TransaksiPesanan"
-    android:background="@drawable/tampilan_semua">
+    android:background="@drawable/tampilan_transaksi">
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,6 +44,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/test_kode_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="100dp">
 
             </TextView>
 
@@ -93,16 +102,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@id/btn_promo"
+        android:layout_marginTop="70dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:layout_alignParentBottom="true">
+        android:layout_marginRight="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Order : Rp"
-            android:layout_marginBottom="50dp"
             android:fontFamily="@font/poppins_semi"
             android:textSize="16sp"
             android:textColor="@color/hitam">
@@ -113,7 +121,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="20.000"
-            android:layout_marginBottom="50dp"
             android:fontFamily="@font/poppins_semi"
             android:textSize="16sp"
             android:textColor="@color/hitam">
@@ -125,6 +132,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/tombol_birudongker"
             android:text="Pay"
+            android:layout_marginStart="90dp"
             android:textAllCaps="false"
             android:textColor="@color/putih"
             android:fontFamily="@font/poppins_semi"

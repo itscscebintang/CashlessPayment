@@ -67,7 +67,8 @@
                     android:text="Send"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/putih"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    android:textSize="15sp">
                 </TextView>
 
             </RelativeLayout>

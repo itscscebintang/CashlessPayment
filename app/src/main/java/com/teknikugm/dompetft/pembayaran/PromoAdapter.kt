@@ -16,6 +16,8 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
     class ViewHolder (item : View) : RecyclerView.ViewHolder(item) {
         val kodepromo = item.kode_promo
         val jumlahpromo = item.jumlah_promo
+        val minbelanja = item.min_belanja
+        val statuspromo = item.status_promo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromoAdapter.ViewHolder {
@@ -28,9 +30,9 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
         val dataItem = data?.get(position)
         holder.kodepromo.text = dataItem?.kodePromo
         holder.jumlahpromo.text = dataItem?.jumlahPromo
-        holder.itemView.setOnClickListener(){
-            onclick(dataItem)
-        }
+        holder.minbelanja.text = dataItem?.minBelanja
+        holder.statuspromo.text = dataItem?.statusPromo
+        holder.itemView.setOnClickListener() { onclick(dataItem) }
     }
 
     override fun getItemCount(): Int {

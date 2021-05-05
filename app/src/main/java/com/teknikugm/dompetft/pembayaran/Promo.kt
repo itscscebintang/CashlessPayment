@@ -11,11 +11,20 @@ import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.API
 import com.teknikugm.dompetft.retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.activity_promo.*
+import kotlinx.android.synthetic.main.activity_promo_adapter.*
+import kotlinx.android.synthetic.main.activity_transaksi_pesanan.*
 import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
 class Promo : AppCompatActivity() {
+
+    private var key= "hasil"
+    private var result : String?= null
+
+    private val z1 = "hasil"
+    private var result1 : String?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_promo)
@@ -35,12 +44,37 @@ class Promo : AppCompatActivity() {
                     if (response.isSuccessful){
                         val dataItem = response.body()?.data
                         val adapter = PromoAdapter(dataItem, this@Promo){ item->
-                            val ii = Intent()
-                            ii.putExtra("promo", item)
-                            setResult(Activity.RESULT_OK, ii)
-                            finish()
-                        }
 
+                            val x = intent.extras // ini untuk ngambil data yang dikasih sama transaksi pesanan, untuk ambil hasil scannya tu
+                            result = x?.getString(key) // nilainya ditarok di sini
+                            val totalbelanja = result?.toInt() // nilainya dimasukin ke variabel
+                            val y = item?.minBelanja.toString().toInt() // ini untuk ngambil minimal belanja di list promo
+//                            val a = item?.kodePromo.toString()
+//                            val b = test_kode_promo.text.toString()
+//
+                            val a = intent.extras
+                            result1 = a?.getString(z1)
+                            val b = result1.toString()
+
+                            status_promo.text= item?.statusPromo.toString()
+                            val ss = item?.kodePromo.toString()
+
+                            if(b == ss || status_promo.text.toString() == "0" ){
+                                Toast.makeText(applicationContext, "Promo telah dipakai", Toast.LENGTH_LONG).show()
+                            } else {
+                                if(totalbelanja != null){
+                                    if(totalbelanja < y){
+                                        Toast.makeText(applicationContext, "Total belanja Anda masih kurang dari $y", Toast.LENGTH_SHORT).show()
+                                    } else {
+                                        val ii = Intent()
+                                        ii.putExtra("promo", item)
+                                        setResult(Activity.RESULT_OK, ii)
+                                        finish()
+                                    }
+                                }
+                            }
+
+                        }
                         rv.layoutManager = LinearLayoutManager(this@Promo)
                         rv.adapter = adapter
                     }
@@ -50,5 +84,18 @@ class Promo : AppCompatActivity() {
                     Toast.makeText(applicationContext, "Connection failed", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+//            val dataPromo = data?.getSerializableExtra("minbelanja") as DataItem
+//            val minBelanja = dataPromo.minBelanja
+//        }
+//    }
+
+    companion object {
+        const val REQUEST_CODE = 2502
     }
 }
