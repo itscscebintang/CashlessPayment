@@ -25,11 +25,11 @@ data class Data(
     @field:SerializedName("name")
     val namaUser: String? = null,
 
-//    @field:SerializedName("email")
-//    val email: String? = null,
-//
-//    @field:SerializedName("nik")
-//    val nik: String? = null,
+    @field:SerializedName("email")
+    val email: String? = null,
+
+    @field:SerializedName("nik")
+    val nik: String? = null,
 
     @field:SerializedName("saldo")
     val saldo: String? = null

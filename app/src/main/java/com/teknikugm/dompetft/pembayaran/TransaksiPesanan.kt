@@ -12,6 +12,9 @@ class TransaksiPesanan : AppCompatActivity() {
     private val key= "hasil"
     private var result : String?=null
 
+    private val key1 = "hasil1"
+    private var result1 : String?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi_pesanan)
@@ -20,6 +23,9 @@ class TransaksiPesanan : AppCompatActivity() {
         result = x?.getString(key)
         hasil_scan.text = result
         total_order.text = result
+
+//        val intent = intent
+//        intent.putExtra("hasil1",test_kode_promo.text)
 
         btn_promo.setOnClickListener(){
             val a = hasil_scan.text.toString() // ini untuk ambil total order biar bisa dibawa ke list promo, untuk dicek min belanjanya tu
@@ -30,16 +36,16 @@ class TransaksiPesanan : AppCompatActivity() {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val dataPromo = data?.getSerializableExtra("promo") as DataItem
-            val promo = dataPromo.jumlahPromo
+            val jumlahpromo = dataPromo.jumlahPromo
             val kodepromo = dataPromo.kodePromo
-            total_promo.setText("Promo Anda Rp $promo")
+            total_promo.setText("Promo Anda Rp $jumlahpromo")
 
-            val a = promo.toString().toInt()
+            val a = jumlahpromo.toString().toInt()
             val b = total_order.text.toString().toInt()
             val c = b-a
 

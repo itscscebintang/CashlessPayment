@@ -8,6 +8,8 @@ object Constant {
     const val username = "username"
     const val password = "password"
     const val balance = "saldo"
+    const val email = "email"
+    const val nik = "nik"
 
     val PREFS_NAME = MainActivity::class.java.`package`?.toString()
 }

@@ -22,7 +22,7 @@ class Promo : AppCompatActivity() {
     private var key= "hasil"
     private var result : String?= null
 
-    private val z1 = "hasil"
+    private val key1 = "hasil1"
     private var result1 : String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,17 +49,15 @@ class Promo : AppCompatActivity() {
                             result = x?.getString(key) // nilainya ditarok di sini
                             val totalbelanja = result?.toInt() // nilainya dimasukin ke variabel
                             val y = item?.minBelanja.toString().toInt() // ini untuk ngambil minimal belanja di list promo
-//                            val a = item?.kodePromo.toString()
-//                            val b = test_kode_promo.text.toString()
 //
                             val a = intent.extras
-                            result1 = a?.getString(z1)
-                            val b = result1.toString()
+                            result1 = a?.getString("hasil1")
+                            val kodepromo = result1.toString()
 
                             status_promo.text= item?.statusPromo.toString()
                             val ss = item?.kodePromo.toString()
 
-                            if(b == ss || status_promo.text.toString() == "0" ){
+                            if(ss == kodepromo || status_promo.text.toString() == "0" ){
                                 Toast.makeText(applicationContext, "Promo telah dipakai", Toast.LENGTH_LONG).show()
                             } else {
                                 if(totalbelanja != null){

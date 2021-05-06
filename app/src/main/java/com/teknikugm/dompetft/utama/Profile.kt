@@ -11,6 +11,7 @@ import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class Profile : Fragment() {
@@ -25,6 +26,8 @@ class Profile : Fragment() {
 
         txtusername_profile.text = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "None")
         txtname_profile.text = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.name, "None")
+        txtnik_profile.text = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.nik, "None")
+        txtemail_profile.text = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.email, "None")
 
         btn_logout.setOnClickListener(){
 
@@ -42,6 +45,7 @@ class Profile : Fragment() {
         val a = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "None")
 
         nampilinSaldo_Profile(a.toString())
+
     }
 
     fun nampilinSaldo_Profile (key : String){

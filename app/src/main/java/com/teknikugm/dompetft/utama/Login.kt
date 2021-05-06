@@ -66,6 +66,8 @@ class Login : AppCompatActivity() {
                             putString(Constant.password, data?.passwordUser)
                             putString(Constant.username, data?.kodeUser)
                             putString(Constant.balance, data?.saldo)
+                            putString(Constant.email, data?.email)
+                            putString(Constant.nik, data?.nik)
                         }
                         val main = Intent(this@Login, MainActivity::class.java)
                         startActivity(main)

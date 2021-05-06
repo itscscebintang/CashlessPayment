@@ -40,6 +40,7 @@ class TransferSaldo : AppCompatActivity() {
 
         btn_cancel_transfer.setOnClickListener(){
             clearData()
+            finish()
         }
     }
 
