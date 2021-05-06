@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pay for Canteen"
+        android:text="Transfer Balance"
         android:textColor="@color/putih"
         android:fontFamily="@font/poppins_semi"
         android:textSize="20sp"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Scan QR Code to Pay for Canteen!"
+        android:text="Scan QR Code to Transfer Your Balance to A Friend!"
         android:layout_below="@id/scanner_view"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppins_semi"

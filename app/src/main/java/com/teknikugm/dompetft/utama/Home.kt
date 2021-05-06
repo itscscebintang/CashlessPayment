@@ -26,9 +26,9 @@ class Home : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        btn_pay_home.setOnClickListener(){
-//            startActivity(Intent(context, Transaksi_Pesanan::class.java))
-//        }
+        btn_send_home.setOnClickListener(){
+            startActivity(Intent(context, Scanner_Transfer::class.java))
+        }
 
         btn_topup_home.setOnClickListener(){
             startActivity(Intent(context, TopUp::class.java))
@@ -60,16 +60,16 @@ class Home : Fragment() {
         val retrofit = RetrofitClient.instance
         myAPI = retrofit.create(API::class.java)
 
-        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
-
-            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
-                Toast.makeText(context, "Tidak bisa memuat saldo", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
-                val a = response.body()?.balance.toString().toInt()
-                txtsaldo_home.text = Currency.toRupiahFormat2(a).replace("$", "").replace(",", ".")
-            }
-        })
+//        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
+//
+//            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
+//                Toast.makeText(context, "Tidak bisa memuat saldo", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
+//                val a = response.body()?.balance.toString().toInt()
+//                txtsaldo_home.text = Currency.toRupiahFormat2(a).replace("$", "").replace(",", ".")
+//            }
+//        })
     }
 }

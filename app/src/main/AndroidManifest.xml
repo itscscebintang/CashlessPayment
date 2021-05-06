@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".pembayaran.TransaksiPesanan"></activity>
+        <activity android:name=".utama.TransferSaldoScan"></activity>
+        <activity android:name=".utama.Scanner_Transfer" />
+        <activity android:name=".pembayaran.TransaksiPesanan" />
         <activity android:name=".pembayaran.Scanner" />
         <activity
             android:name=".pembayaran.Promo"

@@ -17,10 +17,14 @@ import com.journeyapps.barcodescanner.CaptureActivity
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*
+import kotlinx.android.synthetic.main.activity_transaksi_pesanan.*
 import retrofit2.Call
 import retrofit2.Response
 
 class Pay_Canteen_QR : Fragment(){
+
+//    private val key= "hasil"
+//    private var result : String?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_pay__canteen__q_r, container, false)
@@ -30,9 +34,8 @@ class Pay_Canteen_QR : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Unit_UI()
-
         val a = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "noen")
+
         nampilinSaldo(a)
 
         btn_transfer_saldo.setOnClickListener(){

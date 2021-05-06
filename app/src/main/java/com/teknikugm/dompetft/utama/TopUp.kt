@@ -26,7 +26,6 @@ class TopUp : AppCompatActivity() {
                 doTopUp(topup_saldo.text.toString())
             }
         }
-
     }
 
     private fun doTopUp(jumlahTopUp:String){
