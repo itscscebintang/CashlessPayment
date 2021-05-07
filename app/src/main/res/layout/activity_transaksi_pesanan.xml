@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".pembayaran.TransaksiPesanan"
-    android:background="@drawable/tampilan_transaksi">
+    android:background="@drawable/tampilan_semua">
 
         <TextView
+            android:id="@+id/paycanteen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pay_for_canteen"
@@ -17,17 +18,28 @@
             android:textColor="@color/putih"
             android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Orders : "
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="20sp"
-            android:layout_marginTop="140dp"
-            android:textColor="@color/hitam"
-            android:layout_marginStart="20dp">
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Orders : "
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="20sp"
+        android:textColor="@color/hitam"
+        android:layout_marginStart="20dp"
+        android:layout_below="@id/paycanteen"
+        android:layout_marginTop="70dp">
 
-        </TextView>
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/tengah1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/order"
+        android:layout_marginTop="30dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/pesanan"
@@ -35,7 +47,6 @@
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="190dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="20sp">
 
@@ -53,7 +64,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="30sp"
                 android:layout_marginTop="100dp">
-
             </TextView>
 
         </androidx.cardview.widget.CardView>
@@ -65,81 +75,75 @@
             android:background="@drawable/tombol_oren"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_centerInParent="true"
-            android:layout_below="@id/pesanan"
-            android:layout_marginTop="30dp"
             android:text="Check here for promos!"
+            android:layout_marginTop="30dp"
             android:textAllCaps="false"
             android:fontFamily="@font/poppins_semi"
             android:textSize="16sp"
-            android:textColor="@color/putih"
-            android:elevation="3dp">
+            android:textColor="@color/putih">
 
         </Button>
-
-        <!--    <TextView-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:text="Promo Anda : Rp"-->
-        <!--        android:layout_alignParentBottom="true"-->
-        <!--        android:layout_marginBottom="100dp"-->
-        <!--        android:layout_marginLeft="20dp"-->
-        <!--        android:textColor="@color/hitam">-->
-
-        <!--    </TextView>-->
 
         <TextView
             android:id="@+id/total_promo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="100dp"
-            android:layout_marginLeft="130dp">
-
+            android:layout_height="wrap_content">
         </TextView>
 
-    <LinearLayout
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bawah"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/btn_promo"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_lurus">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Order : Rp"
-            android:fontFamily="@font/poppins_semi"
-            android:textSize="16sp"
-            android:textColor="@color/hitam">
-        </TextView>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@+id/total_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="20.000"
-            android:fontFamily="@font/poppins_semi"
-            android:textSize="16sp"
-            android:textColor="@color/hitam">
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi"
+                android:text="Total Order : Rp"
+                android:textColor="@color/hitam"
+                android:textSize="16sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/total_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi"
+                android:hint="20.000"
+                android:textColor="@color/hitam"
+                android:textSize="16sp">
+            </TextView>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_pay_pesanan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/tombol_birudongker"
+            android:fontFamily="@font/poppins_semi"
             android:text="Pay"
-            android:layout_marginStart="90dp"
             android:textAllCaps="false"
             android:textColor="@color/putih"
-            android:fontFamily="@font/poppins_semi"
-            android:textSize="16sp">
+            android:textSize="16sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="20dp">
 
         </Button>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

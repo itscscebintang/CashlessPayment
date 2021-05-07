@@ -3,6 +3,7 @@ package com.teknikugm.dompetft.utama
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContextWrapper
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,10 +11,6 @@ import android.util.Log
 import android.widget.Toast
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.edit_amount
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.saldocontoh_qr
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.txtuname_payqr
 import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
 import retrofit2.Response
@@ -45,19 +42,6 @@ class TransferSaldoScan : AppCompatActivity() {
                 }
             }
         }
-
-//        btn_transfer_saldo_payqr.setOnClickListener(){
-//            if (saldocontoh_payqr.text.toString().toInt() < edit_amount_payqr.text.toString().toInt()){
-//                Toast.makeText(this@TransferSaldoScan, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
-//            } else{
-//                if (edit_amount_payqr.text.toString().toInt() < 5000){
-//                    Toast.makeText(this@TransferSaldoScan, "Transaksi minimal Rp 5000", Toast.LENGTH_SHORT).show()
-//                } else {
-//                    transaksi()
-//                }
-//            }
-//        }
-
     }
 
     fun transaksi(){
@@ -102,7 +86,6 @@ class TransferSaldoScan : AppCompatActivity() {
 
         val f = Addtransaction()
         f.execute()
-
     }
 
     fun clearData(){
@@ -124,7 +107,6 @@ class TransferSaldoScan : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
                 val a = response.body()?.balance
                 saldocontoh_payqr.text = a.toString()
-
             }
         })
     }

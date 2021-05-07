@@ -11,7 +11,6 @@ import android.widget.Toast
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_pay__canteen__q_r.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import retrofit2.Call
 import retrofit2.Response
@@ -35,7 +34,6 @@ class TransferSaldo : AppCompatActivity() {
                     transfer()
                 }
             }
-
         }
 
         btn_cancel_transfer.setOnClickListener(){
@@ -68,7 +66,7 @@ class TransferSaldo : AppCompatActivity() {
 
                 val rh = RequestHandler()
                 Log.d("Params", params.entries.toString())
-                return rh.sendPostRequest("http://192.168.18.158/Kantin/index.php/Transaksi_saldo/transaksi",params)
+                return rh.sendPostRequest("http://192.168.43.203/Kantin/index.php/Transaksi_saldo/transaksi",params)
             }
 
             override fun onPostExecute(result: String?) {
@@ -80,14 +78,15 @@ class TransferSaldo : AppCompatActivity() {
                     .setMessage("Transaksi sebesar $amount_transaksi berhasil")
                     .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
                         clearData()
+                        finish()
                     }
                     .show()
+
             }
         }
 
         val f = Addtransaction()
         f.execute()
-
     }
 
     fun clearData(){
@@ -109,9 +108,7 @@ class TransferSaldo : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
                 val a = response.body()?.balance
                 saldo_contoh.text = a.toString()
-
             }
         })
     }
-
 }

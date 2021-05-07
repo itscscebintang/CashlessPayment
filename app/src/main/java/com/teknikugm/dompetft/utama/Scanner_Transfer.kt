@@ -24,6 +24,7 @@ class Scanner_Transfer : AppCompatActivity() {
         setContentView(R.layout.activity_scanner__transfer)
 
         scanner()
+//        finish()
     }
 
     fun scanner(){

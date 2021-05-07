@@ -5,43 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".utama.Profile"
-    android:background="@drawable/tampilan_profile">
+    android:background="@drawable/tampilan_semua">
 
-    <LinearLayout
-        android:id="@+id/profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp">
+    <RelativeLayout
+        android:id="@+id/atas"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/shape_lurus_biru">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profil"
-            android:textColor="@color/birumuda"
-            android:textSize="38sp"
-            android:fontFamily="@font/poppins_bold">
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp">
 
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil"
+                android:textColor="@color/birumuda"
+                android:textSize="38sp"
+                android:fontFamily="@font/poppins_bold">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="e"
-            android:textSize="38sp"
-            android:textColor="@color/oren"
-            android:fontFamily="@font/poppins_bold">
+            </TextView>
 
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="e"
+                android:textSize="38sp"
+                android:textColor="@color/oren"
+                android:fontFamily="@font/poppins_bold">
 
-    </LinearLayout>
+            </TextView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_centerInParent="true">
+            android:layout_below="@id/atas"
+            android:layout_marginTop="30dp">
 
             <TextView
                 android:id="@+id/txtusername_profile"
@@ -52,8 +60,7 @@
                 android:fontFamily="@font/poppins_semi"
                 android:textSize="15sp"
                 android:textAlignment="center"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp">
+                android:layout_gravity="center">
 
             </TextView>
 
@@ -74,7 +81,7 @@
                android:background="@drawable/tombol_oren"
                android:layout_marginRight="20dp"
                android:layout_marginLeft="20dp"
-               android:layout_marginTop="20dp">
+               android:layout_marginTop="30dp">
 
                <RelativeLayout
                    android:layout_width="match_parent"
