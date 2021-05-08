@@ -17,7 +17,7 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
         val kodepromo = item.kode_promo
         val jumlahpromo = item.jumlah_promo
         val minbelanja = item.min_belanja
-        val statuspromo = item.status_promo
+//        val statuspromo = item.status_promo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromoAdapter.ViewHolder {
@@ -31,7 +31,7 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
         holder.kodepromo.text = dataItem?.kodePromo
         holder.jumlahpromo.text = dataItem?.jumlahPromo
         holder.minbelanja.text = dataItem?.minBelanja
-        holder.statuspromo.text = dataItem?.statusPromo
+//        holder.statuspromo.text = dataItem?.statusPromo
         holder.itemView.setOnClickListener() { onclick(dataItem) }
     }
 

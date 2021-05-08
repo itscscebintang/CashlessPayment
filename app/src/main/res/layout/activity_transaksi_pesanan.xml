@@ -18,8 +18,14 @@
             android:textColor="@color/putih"
             android:textSize="20sp" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="120dp">
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your Orders : "
@@ -28,9 +34,21 @@
         android:textColor="@color/hitam"
         android:layout_marginStart="20dp"
         android:layout_below="@id/paycanteen"
-        android:layout_marginTop="70dp">
+        android:layout_gravity="center_vertical">
 
     </TextView>
+
+    <TextView
+        android:id="@+id/hasil_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="0sp"
+        android:text="SDISFG"
+        android:layout_gravity="center_vertical">
+    </TextView>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/tengah1"
@@ -38,8 +56,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_below="@id/order"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/order">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/pesanan"
@@ -49,14 +67,6 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="20sp">
-
-            <TextView
-                android:id="@+id/hasil_scan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp">
-
-            </TextView>
 
             <TextView
                 android:id="@+id/test_kode_promo"
@@ -89,6 +99,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/total_promo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/tombol_oren"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:text="Check here for promos!"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:fontFamily="@font/poppins_semi"-->
+<!--            android:textSize="16sp"-->
+<!--            android:textColor="@color/putih">-->
+
+<!--        </RelativeLayout>-->
 
     </LinearLayout>
 
@@ -123,7 +149,8 @@
                 android:fontFamily="@font/poppins_semi"
                 android:hint="20.000"
                 android:textColor="@color/hitam"
-                android:textSize="16sp">
+                android:textSize="16sp"
+                android:layout_marginLeft="4dp">
             </TextView>
 
         </LinearLayout>

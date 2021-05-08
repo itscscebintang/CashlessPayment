@@ -17,7 +17,7 @@ data class DataItem(
     @field:SerializedName("min_belanja")
     val minBelanja: String? = null,
 
-    @field:SerializedName("status_promo")
-    val statusPromo: String? = null
+//    @field:SerializedName("status_promo")
+//    val statusPromo: String? = null
 
 ) : Serializable

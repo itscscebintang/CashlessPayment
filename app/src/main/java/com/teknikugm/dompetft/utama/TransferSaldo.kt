@@ -81,7 +81,6 @@ class TransferSaldo : AppCompatActivity() {
                         finish()
                     }
                     .show()
-
             }
         }
 

@@ -12,28 +12,21 @@ class TransaksiPesanan : AppCompatActivity() {
     private val key= "hasil"
     private var result : String?=null
 
-    private val key1 = "hasil1"
-    private var result1 : String?=null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi_pesanan)
 
-        val x = intent.extras // ini untuk ambil nilai dri promo
-        result = x?.getString(key)
-        hasil_scan.text = result
-        total_order.text = result
-
-//        val intent = intent
-//        intent.putExtra("hasil1",test_kode_promo.text)
+        val totalOrder = intent.getStringExtra("hasil")
+        hasil_scan.text = totalOrder
+        total_order.text = totalOrder
 
         btn_promo.setOnClickListener(){
             val a = hasil_scan.text.toString() // ini untuk ambil total order biar bisa dibawa ke list promo, untuk dicek min belanjanya tu
             val i = Intent(this, Promo::class.java) // ini dia nge intent ke kelas promo
             i.putExtra(key, a) // ini untuk bawa nilainya, kek key tu extrasnya, jdi kayak nyambungin yg nilai dibawa ni nnti di activity tujuannya taroknya dimana
+            i.putExtra("kode_promo", result)
             startActivityForResult((i), REQUEST_CODE) // tu ini startactivity kalo bawa nilai, jdi startactivityforresult
         }
-
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,15 +35,22 @@ class TransaksiPesanan : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             val dataPromo = data?.getSerializableExtra("promo") as DataItem
             val jumlahpromo = dataPromo.jumlahPromo
-            val kodepromo = dataPromo.kodePromo
+            result = dataPromo.kodePromo
+
+            val x = jumlahpromo.toString().toInt()
+            val y = hasil_scan.text.toString().toInt()
+
             total_promo.setText("Promo Anda Rp $jumlahpromo")
+            if( x > y){
+                total_order.setText("0")
+            } else {
+                val a = jumlahpromo.toString().toInt()
+                val b = hasil_scan.text.toString().toInt()
+                val c = b-a
 
-            val a = jumlahpromo.toString().toInt()
-            val b = total_order.text.toString().toInt()
-            val c = b-a
-
-            total_order.text = c.toString()
-            test_kode_promo.text = kodepromo.toString()
+                total_order.text = c.toString()
+                test_kode_promo.text = result
+            }
         }
     }
 
