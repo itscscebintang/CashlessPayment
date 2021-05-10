@@ -38,14 +38,17 @@
 
     </TextView>
 
+
+
     <TextView
         android:id="@+id/hasil_scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="0sp"
+        android:textSize="20sp"
         android:text="SDISFG"
         android:layout_gravity="center_vertical">
     </TextView>
+
 
     </LinearLayout>
 
@@ -76,6 +79,23 @@
                 android:layout_marginTop="100dp">
             </TextView>
 
+            <TextView
+                android:id="@+id/test_persentase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="150dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/saldo_anda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="10000"
+                android:textSize="20sp"
+                android:layout_marginTop="200dp">
+            </TextView>
+
         </androidx.cardview.widget.CardView>
 
         <Button
@@ -99,6 +119,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
+
+
 
 <!--        <RelativeLayout-->
 <!--            android:id="@+id/total_promo"-->

@@ -17,6 +17,7 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
         val kodepromo = item.kode_promo
         val jumlahpromo = item.jumlah_promo
         val minbelanja = item.min_belanja
+        val persentasepromo = item.persentase_promo
 //        val statuspromo = item.status_promo
     }
 
@@ -31,6 +32,7 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
         holder.kodepromo.text = dataItem?.kodePromo
         holder.jumlahpromo.text = dataItem?.jumlahPromo
         holder.minbelanja.text = dataItem?.minBelanja
+        holder.persentasepromo.text = dataItem?.persentasePromo
 //        holder.statuspromo.text = dataItem?.statusPromo
         holder.itemView.setOnClickListener() { onclick(dataItem) }
     }
