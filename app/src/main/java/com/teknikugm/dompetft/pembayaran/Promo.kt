@@ -50,7 +50,7 @@ class Promo : AppCompatActivity() {
                                     if(totalbelanja < y){
                                         Toast.makeText(applicationContext, "Total belanja Anda masih kurang dari $y", Toast.LENGTH_SHORT).show()
                                     }else if(item?.kodePromo == selectedPromo){
-                                        Toast.makeText(applicationContext, "ooppss.. $selectedPromo udah kamu ambil", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(applicationContext, "Promo $selectedPromo sudah Anda pakai", Toast.LENGTH_SHORT).show()
                                     }else {
                                         val ii = Intent()
                                         ii.putExtra("promo", item)

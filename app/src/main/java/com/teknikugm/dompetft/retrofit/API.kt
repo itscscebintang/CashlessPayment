@@ -1,6 +1,7 @@
 package com.teknikugm.dompetft.retrofit
 
 import com.teknikugm.dompetft.pembayaran.ResponsePromo
+import com.teknikugm.dompetft.pembayaran.Response_Detail
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.*
@@ -38,4 +39,15 @@ interface API {
 
     @GET("index.php/Transaksi_promo/api_list_promo")
     fun ambil_promo() : Call<ResponsePromo>
+
+    @FormUrlEncoded
+    @POST("index.php/Transaksi_kantin/detail_transaksi")
+    fun detailTransaksi(
+
+        @Field("user") user: String?,
+        @Field("total_bayar") totalBayar: Int?,
+        @Field("total_asli") totalAsli: Int?,
+        @Field("diskon") diskonDetail: Int?
+
+    ) : Call<Response_Detail>
 }

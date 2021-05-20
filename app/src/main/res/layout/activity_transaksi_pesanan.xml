@@ -45,7 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="SDISFG"
         android:layout_gravity="center_vertical">
     </TextView>
 
@@ -88,6 +87,15 @@
             </TextView>
 
             <TextView
+                android:id="@+id/test_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="250dp">
+            </TextView>
+
+
+            <TextView
                 android:id="@+id/saldo_anda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,8 +125,7 @@
         <TextView
             android:id="@+id/total_promo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
+            android:layout_height="wrap_content"></TextView>
 
 
 

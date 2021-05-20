@@ -1,20 +1,23 @@
 package com.teknikugm.dompetft.pembayaran
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContextWrapper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.content.edit
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.retrofit.API
-import com.teknikugm.dompetft.retrofit.Constant
-import com.teknikugm.dompetft.retrofit.ResponseSaldo
-import com.teknikugm.dompetft.retrofit.RetrofitClient
+import com.teknikugm.dompetft.retrofit.*
+import com.teknikugm.dompetft.utama.Login
+import com.teknikugm.dompetft.utama.MainActivity
+import kotlinx.android.synthetic.main.activity_promo_adapter.*
 import kotlinx.android.synthetic.main.activity_transaksi_pesanan.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import retrofit2.Call
 import retrofit2.Response
+import kotlin.random.Random
 
 class TransaksiPesanan : AppCompatActivity() {
 
@@ -41,26 +44,29 @@ class TransaksiPesanan : AppCompatActivity() {
             startActivityForResult((i), REQUEST_CODE) // tu ini startactivity kalo bawa nilai, jdi startactivityforresult
         }
 
+
         btn_pay_pesanan.setOnClickListener(){
+
+
+            val  promo4 = 90
+            val a = test_promo.text.toString()
+            val promoo = Currency.toRupiahFormat2(a.toInt()).replace(",", "").replace(".", "").replace("Rp", "")
 
             if(total_promo.text.toString().isEmpty()){
                 if(saldo_anda.text.toString().toInt() < total_order.text.toString().toInt()){
                     Toast.makeText(this, "Saldo anda tidak cukup", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Saldo anda cukup", Toast.LENGTH_SHORT).show()
+
+                    detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(), a)
                 }
             }else{
-//                startActivityForResult()
-
+                detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(),a)
             }
-
-
         }
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
 
             if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
                 val dataPromo = data?.getSerializableExtra("promo") as DataItem
@@ -70,18 +76,18 @@ class TransaksiPesanan : AppCompatActivity() {
 
                 test_persentase.text = persentasePromo.toString()
 
-//            val x = jumlahpromo.toString().toInt()
                 val hasilScan = hasil_scan.text.toString().toInt()
                 val promo1 = persentasePromo.toString().toInt()
                 val promo2 = promo1*0.01
                 val promo = promo2*hasilScan
                 total_promo.setText("Promo Anda Rp $promo")
+                test_promo.text = Currency.toRupiahFormat2(promo.toInt()).replace("$", "").replace(".", "").replace(",", "")
 
                 if(promo > hasilScan){
                     total_order.setText("0")
                 } else {
                     val hasil = hasilScan - promo
-                    total_order.text = hasil.toString()
+                    total_order.text =  Currency.toRupiahFormat2(hasil.toInt()).replace("$", "").replace(".", "").replace(",", "")
                 }
 
                 test_kode_promo.text = result
@@ -126,5 +132,60 @@ class TransaksiPesanan : AppCompatActivity() {
                 saldo_anda.text = a.toString()
             }
         })
+    }
+
+    fun detailTransaksi (totalBayar : String, totalasli:String, diskon:String){
+        val retrofit = RetrofitClient.instance
+        val api = retrofit.create(API::class.java)
+
+        val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
+
+        api.detailTransaksi(username, totalBayar.toInt(), totalasli.toInt(), diskon.toInt()).enqueue(
+
+            object : retrofit2.Callback<Response_Detail>{
+                override fun onFailure(call: Call<Response_Detail>, t: Throwable) {
+                    Toast.makeText(this@TransaksiPesanan, t.message, Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<Response_Detail>,
+                    response: Response<Response_Detail>
+                ) {
+                    if(response.isSuccessful){
+                        val message = response.body()?.message
+                        if (response.isSuccessful){
+                            val message = response.body()?.message
+
+                            val a = total_order.text.toString().toInt()
+                            val b = saldo_anda.text.toString().toInt()
+                            val c = b - a
+
+                            val d = Currency.toRupiahFormat2(a).replace("$", "Rp").replace(",", ".")
+                            val e = Currency.toRupiahFormat2(c).replace("$", "Rp").replace(",", ".")
+
+                            AlertDialog.Builder(this@TransaksiPesanan)
+                                .setTitle("Transaksi Pembayaran senilai $d berhasil ")
+                                .setMessage("Saldo Anda sekarang : $e")
+                                .setPositiveButton("OK") { dialog, whichButton ->
+                                    startActivity(Intent(this@TransaksiPesanan, MainActivity::class.java))
+                                }
+                                .setNegativeButton("CLOSE") { dialog, whichButton ->
+                                    startActivity(Intent(this@TransaksiPesanan, MainActivity::class.java))
+                                }
+                                .show()
+
+                            Toast.makeText(this@TransaksiPesanan, message, Toast.LENGTH_SHORT).show()
+                        }else{
+                            Toast.makeText(this@TransaksiPesanan, message, Toast.LENGTH_SHORT).show()
+                        }
+                    }else{
+                        Toast.makeText(this@TransaksiPesanan, response.message(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+
+        )
+
     }
 }
