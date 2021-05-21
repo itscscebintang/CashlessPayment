@@ -46,25 +46,32 @@ class Register : AppCompatActivity() {
               editpass_register.error = "Masukkan Password Anda"
               editpass_register.requestFocus()
               return@setOnClickListener
-            }else
+            }else if(editpass_register.text.toString() != editconfpass_register.text.toString() ){
+                Toast.makeText(this, "Password Anda tidak sama!", Toast.LENGTH_SHORT).show()
+            }
+            else
                 registerData(
-                editname_register.text.toString(),
                 editusername_register.text.toString(),
+                editname_register.text.toString(),
+                    editpass_register.text.toString(),
                     editemail_register.text.toString(),
-                    editktm_register.text.toString(),
-                editpass_register.text.toString()
+                    editktm_register.text.toString()
             )
             
+        }
+
+        btn_loginreg.setOnClickListener(){
+            startActivity(Intent(this, Login::class.java))
         }
     }
 
     private fun registerData(username: String, name: String, password: String, email:String, nik:String) {
-        compositeDisposable.add(myAPI.registeruser(name, username, email, nik, password)
+        compositeDisposable.add(myAPI.registeruser(username, name,password,email, nik)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { pesan ->
                 Toast.makeText(this@Register, pesan, Toast.LENGTH_LONG).show()
-                startActivity(Intent(this@Register, Login::class.java))
+//                startActivity(Intent(this@Register, Login::class.java))
             })
     }
 

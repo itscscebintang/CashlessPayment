@@ -199,6 +199,20 @@
                         android:layout_marginLeft="40dp"
                         android:layout_marginTop="50dp"
                         android:layout_marginRight="40dp"
+                        android:background="@drawable/tombol_birudongker"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Sign Up"
+                        android:textColor="@color/putih"
+                        android:textSize="16dp">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btn_loginreg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
                         android:layout_marginBottom="70dp"
                         android:background="@drawable/tombol_birudongker"
                         android:fontFamily="@font/poppins_bold"

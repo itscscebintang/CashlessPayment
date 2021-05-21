@@ -27,7 +27,10 @@ class TransferSaldo : AppCompatActivity() {
 
             if (saldo_contoh.text.toString().toInt() < editbalance_transfer.text.toString().toInt()){
                 Toast.makeText(this, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
-            } else{
+            } else if(a == editidnumber_transfer.text.toString()){
+               Toast.makeText(this, "Transaksi tidak dapat dilakukan", Toast.LENGTH_SHORT).show()
+            }
+            else {
                 if (editbalance_transfer.text.toString().toInt() < 5000){
                     Toast.makeText(this, "Transaksi minimal Rp 5000", Toast.LENGTH_SHORT).show()
                 } else {

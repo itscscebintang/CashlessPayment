@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.Toast
 import com.teknikugm.dompetft.R
 import com.teknikugm.dompetft.retrofit.*
+import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
 import retrofit2.Response
@@ -34,7 +35,10 @@ class TransferSaldoScan : AppCompatActivity() {
         btn_transfer_saldo_payqr.setOnClickListener(){
             if (saldocontoh_payqr.text.toString().toInt() < edit_amount_payqr.text.toString().toInt()){
                 Toast.makeText(this, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
-            } else {
+            }else if(a.toString() == txtuname_transferqr.text.toString()) {
+                Toast.makeText(this, "Transaksi tidak dapat dilakukan", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+            }else {
                 if (edit_amount_payqr.text.toString().toInt() < 5000) {
                     Toast.makeText(this, "Transaksi minimal Rp 5.000", Toast.LENGTH_SHORT).show()
                 } else {
@@ -79,6 +83,8 @@ class TransferSaldoScan : AppCompatActivity() {
                     .setMessage("Transaksi sebesar $amount_transaksi berhasil")
                     .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
                         clearData()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+
                     }
                     .show()
             }

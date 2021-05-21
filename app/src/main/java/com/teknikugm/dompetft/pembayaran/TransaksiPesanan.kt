@@ -44,19 +44,19 @@ class TransaksiPesanan : AppCompatActivity() {
             startActivityForResult((i), REQUEST_CODE) // tu ini startactivity kalo bawa nilai, jdi startactivityforresult
         }
 
-
         btn_pay_pesanan.setOnClickListener(){
-
 
             val  promo4 = 90
             val a = test_promo.text.toString()
-            val promoo = Currency.toRupiahFormat2(a.toInt()).replace(",", "").replace(".", "").replace("Rp", "")
 
             if(total_promo.text.toString().isEmpty()){
                 if(saldo_anda.text.toString().toInt() < total_order.text.toString().toInt()){
                     Toast.makeText(this, "Saldo anda tidak cukup", Toast.LENGTH_SHORT).show()
-                } else {
+                } else if (a.isEmpty()){
+                    val b = 0
+                    detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(), b.toString())
 
+                }else {
                     detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(), a)
                 }
             }else{
@@ -81,6 +81,8 @@ class TransaksiPesanan : AppCompatActivity() {
                 val promo2 = promo1*0.01
                 val promo = promo2*hasilScan
                 total_promo.setText("Promo Anda Rp $promo")
+
+
                 test_promo.text = Currency.toRupiahFormat2(promo.toInt()).replace("$", "").replace(".", "").replace(",", "")
 
                 if(promo > hasilScan){
@@ -91,9 +93,6 @@ class TransaksiPesanan : AppCompatActivity() {
                 }
 
                 test_kode_promo.text = result
-
-
-
 
 
 //            if( x > y){
