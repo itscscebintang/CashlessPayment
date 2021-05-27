@@ -1,6 +1,7 @@
 package com.teknikugm.dompetft.utama
 
 import android.content.ContextWrapper
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.teknikugm.dompetft.retrofit.Constant
 import com.teknikugm.dompetft.retrofit.Response_Topup
 import com.teknikugm.dompetft.retrofit.RetrofitClient
 import kotlinx.android.synthetic.main.activity_top_up.*
+import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.random.Random
@@ -24,7 +26,13 @@ class TopUp : AppCompatActivity() {
                 Toast.makeText(this, "Masukkan jumlah saldo Top Up", Toast.LENGTH_SHORT).show()
             }else{
                 doTopUp(topup_saldo.text.toString())
+                clearData()
             }
+        }
+
+        btn_cancel_topup.setOnClickListener(){
+            clearData()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -62,5 +70,9 @@ class TopUp : AppCompatActivity() {
             }
 
         )
+    }
+
+    fun clearData(){
+        topup_saldo.setText("")
     }
 }

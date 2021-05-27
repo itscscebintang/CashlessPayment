@@ -3,15 +3,18 @@ package com.teknikugm.dompetft.utama
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.ContextWrapper
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.teknikugm.dompetft.R
+import com.teknikugm.dompetft.pembayaran.Response_Detail
 import com.teknikugm.dompetft.retrofit.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo.*
+import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -34,7 +37,9 @@ class TransferSaldo : AppCompatActivity() {
                 if (editbalance_transfer.text.toString().toInt() < 5000){
                     Toast.makeText(this, "Transaksi minimal Rp 5000", Toast.LENGTH_SHORT).show()
                 } else {
-                    transfer()
+//                    transaksi()
+                    val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
+                    transfer(username.toString(), editbalance_transfer.text.toString(), editidnumber_transfer.text.toString())
                 }
             }
         }
@@ -45,7 +50,7 @@ class TransferSaldo : AppCompatActivity() {
         }
     }
 
-    fun transfer(){
+    fun transaksi(){
 
         val preferences = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "noen")
         val uname_to_transaksi = editidnumber_transfer.text.toString()
@@ -69,7 +74,7 @@ class TransferSaldo : AppCompatActivity() {
 
                 val rh = RequestHandler()
                 Log.d("Params", params.entries.toString())
-                return rh.sendPostRequest("http://192.168.43.203/Kantin/index.php/Transaksi_saldo/transaksi",params)
+                return rh.sendPostRequest("http://192.168.18.158/Kantin/index.php/Transaksi_saldo/transaksi",params)
             }
 
             override fun onPostExecute(result: String?) {
@@ -89,6 +94,49 @@ class TransferSaldo : AppCompatActivity() {
 
         val f = Addtransaction()
         f.execute()
+    }
+
+    fun transfer(username:String, jumlahTransfer:String, username_to:String){
+        val retrofit = RetrofitClient.instance
+        val api = retrofit.create(API::class.java)
+        val amount_transaksi = editbalance_transfer.text.toString()
+
+        api.transaksi(username, jumlahTransfer.toInt(), username_to).enqueue(
+
+            object : retrofit2.Callback<Response_Detail>{
+                override fun onFailure(call: Call<Response_Detail>, t: Throwable) {
+                    Toast.makeText(this@TransferSaldo, t.message, Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<Response_Detail>,
+                    response: Response<Response_Detail>
+                ) {
+                    if (response.isSuccessful) {
+                        val message = response.body()?.message
+                        if (response.isSuccessful) {
+                            val message = response.body()?.message
+
+                            AlertDialog.Builder(this@TransferSaldo)
+                                .setMessage("Transaksi sebesar $amount_transaksi berhasil")
+                                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+                                    clearData()
+                                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                                }
+                                .show()
+                            Toast.makeText(this@TransferSaldo, message, Toast.LENGTH_SHORT).show()
+                        } else{
+                            Toast.makeText(this@TransferSaldo, message , Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@TransferSaldo, response.message() , Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+
+        )
+
     }
 
     fun clearData(){

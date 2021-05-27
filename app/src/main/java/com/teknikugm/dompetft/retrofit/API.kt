@@ -50,4 +50,26 @@ interface API {
         @Field("diskon") diskonDetail: Int?
 
     ) : Call<Response_Detail>
+
+    @FormUrlEncoded
+    @POST("index.php/User/register")
+    fun register(
+
+        @Field("username") username: String?,
+        @Field("name") nameReg: String?,
+        @Field("password") passwordReg: String?,
+        @Field("email") emailReg: String?,
+        @Field("nik") nikReg: String?
+
+    ) : Call<Response_Detail>
+
+    @FormUrlEncoded
+    @POST("index.php/Transaksi_saldo/transaksi")
+    fun transaksi(
+
+        @Field("username") username: String?,
+        @Field("jumlah_payment") nameReg: Int?,
+        @Field("username_to") passwordReg: String?
+
+    ) : Call<Response_Detail>
 }

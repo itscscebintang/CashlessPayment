@@ -7,6 +7,18 @@
     tools:context=".utama.TopUp"
     android:background="@drawable/tampilan_semua">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top Up"
+        android:textColor="@color/putih"
+        android:fontFamily="@font/poppins_semi"
+        android:textSize="20sp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="70dp">
+
+    </TextView>
+
         <RelativeLayout
             android:id="@+id/layout_voucher"
             android:layout_width="wrap_content"
@@ -18,7 +30,7 @@
                 android:id="@+id/txtvoucher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top Up"
+                android:text="Top up"
                 android:textSize="20dp"
                 android:textColor="@color/oren"
                 android:fontFamily="@font/poppins_semi">
@@ -43,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:hint="Your top up ampunt"
+            android:hint="Your top up amount"
             android:inputType="number"
             android:layout_below="@id/layout_voucher"
             android:layout_centerVertical="true"
