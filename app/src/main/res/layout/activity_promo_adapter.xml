@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         app:cardCornerRadius="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
@@ -16,47 +16,37 @@
         android:elevation="0dp">
 
         <RelativeLayout
-            android:id="@+id/relative"
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/kode_promo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semi"
+            android:hint="RYTH"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/hitam"
+            android:textSize="20sp">
+
+        </TextView>
 
             <LinearLayout
                 android:id="@+id/diskon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/persentase_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_semi"
-                    android:hint="5"
-                    android:textColor="@color/hitam"
-                    android:textSize="20sp">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/kode_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins_semi"
-                    android:hint="RYTH"
-                    android:textColor="@color/hitam"
-                    android:textSize="20sp">
-
-                </TextView>
+                android:orientation="vertical"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="20dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_gravity="end">
 
                     <TextView
                         android:id="@+id/ket"
@@ -64,50 +54,28 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/diskon"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="@string/potongan_sebesar_rp"
+                        android:text="Diskon sebesar "
                         android:textColor="@color/hitam"
                         android:textSize="16sp">
 
                     </TextView>
 
                     <TextView
-                        android:id="@+id/jumlah_promo"
+                        android:id="@+id/persentase_promo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
-                        android:layout_toRightOf="@id/ket"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="5.000"
                         android:textColor="@color/hitam"
                         android:textSize="16sp">
 
                     </TextView>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Berlaku hingga"
-                        android:textColor="@color/hitam"
-                        android:textSize="14sp">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/tanggal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:hint="3 Mei 2021"
+                        android:text=" %"
                         android:textColor="@color/hitam"
                         android:textSize="14sp">
 
@@ -119,7 +87,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="end">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -135,31 +104,25 @@
                         android:id="@+id/min_belanja"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:hint="5000"
+                        android:hint="0"
+                        android:textAlignment="textEnd"
                         android:textColor="@color/hitam"
                         android:textSize="14sp">
 
                     </TextView>
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/cheat_minBelanja"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="0sp">-->
+
+<!--                    </TextView>-->
+
                 </LinearLayout>
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_use"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/tombol_birudongker"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Use"
-                android:textAllCaps="false"
-                android:textColor="@color/putih">
-
-            </Button>
 
         </RelativeLayout>
 

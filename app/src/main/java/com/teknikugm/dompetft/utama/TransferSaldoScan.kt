@@ -20,7 +20,6 @@ import retrofit2.Response
 
 class TransferSaldoScan : AppCompatActivity() {
 
-    private val key= "hasil"
     private var result : String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,85 +27,59 @@ class TransferSaldoScan : AppCompatActivity() {
         setContentView(R.layout.activity_transfer_saldo_scan)
 
 //         untuk edit titik di edit text
-        edit_amount_payqr.setCurrency(CurrencySymbols.INDONESIA)
-        edit_amount_payqr.setSpacing(true)
+        edit_amount_payqr.setSpacing(false)
         edit_amount_payqr.setDecimals(false)
-        edit_amount_payqr.setDelimiter(true)
+        edit_amount_payqr.setDelimiter(false)
         edit_amount_payqr.setSeparator(".")
 
+        panah_tfscan.setOnClickListener(){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         val x = intent.extras
-        result = x?.getString(key)
+        result = x?.getString("SCAN")
         txtuname_transferqr.text = result
 
         val a = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "none")
         nampilinSaldo(a)
 
         btn_transfer_saldo_payqr.setOnClickListener(){
-            val x = edit_amount_payqr.text.toString().replace("Rp. ","").replace(".","")
+            val x = edit_amount_payqr.text.toString().replace("Rp","").replace(".","")
 
-            if (saldocontoh_payqr.text.toString().toInt() < x.toInt()){
-                Toast.makeText(this, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
-            }else if(a.toString() == txtuname_transferqr.text.toString()) {
-                Toast.makeText(this, "Transaksi tidak dapat dilakukan", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, MainActivity::class.java))
-            }else {
+            if (edit_amount_payqr.text.toString().isEmpty()){
+                Toast.makeText(this, "Masukkan jumlah saldo yang akan ditransfer", Toast.LENGTH_SHORT).show()
+            }
+            else if(saldocontoh_payqr.text.toString().toInt() < x.toInt()){
+                AlertDialog.Builder(this@TransferSaldoScan)
+                    .setMessage("Saldo Anda tidak cukup")
+                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+                        clearData()
+                    }
+                    .show()
+            }
+            else if(a.toString() == txtuname_transferqr.text.toString()) {
+                AlertDialog.Builder(this@TransferSaldoScan)
+                    .setMessage("Transaksi tidak dapat dilakukan")
+                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+                        clearData()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    }
+                    .show()
+            } else {
                 if (x.toInt() < 5000) {
                     Toast.makeText(this, "Transaksi minimal Rp 5.000", Toast.LENGTH_SHORT).show()
                 } else {
-//                    transaksi()
                     val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
                     transfer(username.toString(), x, txtuname_transferqr.text.toString() )
                 }
             }
         }
-    }
 
-    fun transaksi(){
-
-        val preferences = this@TransferSaldoScan.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "none")
-        val uname_to_transaksi = txtuname_transferqr.text.toString()
-        val amount_transaksi = edit_amount_payqr.text.toString()
-        val amount= edit_amount_payqr.text.toString().replace("Rp. ","").replace(".","")
-
-        class Addtransaction : AsyncTask<Void, Void, String>(){
-
-            lateinit var loading : ProgressDialog
-
-            override fun onPreExecute() {
-                super.onPreExecute()
-                loading=  ProgressDialog.show(this@TransferSaldoScan, "menambahkan", "tunggu", false, false)
-            }
-
-            override fun doInBackground(vararg params: Void?): String {
-
-
-                val params= HashMap<String, String?>()
-                params ["username"]= preferences
-                params ["jumlah_payment"]= amount
-                params ["username_to"] = uname_to_transaksi
-
-                val rh = RequestHandler()
-                Log.d("Params", params.entries.toString())
-                return rh.sendPostRequest("http://192.168.18.158/Kantin/index.php/Transaksi_saldo/transaksi",params)
-            }
-
-            override fun onPostExecute(result: String?) {
-                super.onPostExecute(result)
-                loading.dismiss()
-
-                AlertDialog.Builder(this@TransferSaldoScan)
-                    .setMessage("Transaksi sebesar $amount_transaksi berhasil")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
-
-                    }
-                    .show()
-            }
+        btn_cancel_tfscan.setOnClickListener(){
+            startActivity(Intent(this, MainActivity::class.java))
+            clearData()
         }
 
-        val f = Addtransaction()
-        f.execute()
     }
 
     fun transfer(username:String, jumlahTransfer:String, username_to:String){
@@ -121,7 +94,6 @@ class TransferSaldoScan : AppCompatActivity() {
                 override fun onFailure(call: Call<Response_Detail>, t: Throwable) {
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                     Toast.makeText(this@TransferSaldoScan, t.message, Toast.LENGTH_SHORT).show()
-
                 }
 
                 override fun onResponse(
@@ -134,14 +106,13 @@ class TransferSaldoScan : AppCompatActivity() {
                             val message = response.body()?.message
 
                             AlertDialog.Builder(this@TransferSaldoScan)
-                                .setMessage("Transaksi sebesar $amount_transaksi berhasil")
+                                .setMessage("Transaksi sebesar Rp$amount_transaksi berhasil")
                                 .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
                                     clearData()
                                     startActivity(Intent(applicationContext, MainActivity::class.java))
-
                                 }
                                 .show()
-                            Toast.makeText(this@TransferSaldoScan, message, Toast.LENGTH_SHORT).show()
+
                         } else{
                             Toast.makeText(this@TransferSaldoScan, message , Toast.LENGTH_SHORT).show()
                         }

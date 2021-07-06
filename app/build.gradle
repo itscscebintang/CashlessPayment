@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.teknikugm.dompetft"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -65,7 +65,4 @@ dependencies {
 
     implementation 'me.abhinay.input:currency-edittext:1.1'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
-
-    implementation 'me.abhinay.input:currency-edittext:1.1'
-
 }

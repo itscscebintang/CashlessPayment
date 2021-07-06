@@ -21,6 +21,10 @@ data class DataItem(
 //    val statusPromo: String? = null
 
     @field:SerializedName("persentase_promo")
-    val persentasePromo: String? = null
+    val persentasePromo: String? = null,
+
+    @field:SerializedName("jumlah_barispromo")
+    val jumlah_barispromo: Int? = null
+
 
 ) : Serializable

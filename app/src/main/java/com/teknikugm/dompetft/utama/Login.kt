@@ -34,7 +34,8 @@ class Login : AppCompatActivity() {
                 editusername_login.error = "Masukkan Username"
                 editusername_login.requestFocus()
                 return@setOnClickListener
-            } else if (editpassword_login.text.toString().isEmpty()) {
+            } else if (
+                editpassword_login.text.toString().isEmpty()) {
                 editpassword_login.error = "Masukkan Password"
                 editpassword_login.requestFocus()
                 return@setOnClickListener

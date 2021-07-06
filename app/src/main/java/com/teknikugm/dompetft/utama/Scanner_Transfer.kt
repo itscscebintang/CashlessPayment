@@ -1,30 +1,26 @@
 package com.teknikugm.dompetft.utama
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
+import androidx.appcompat.app.AppCompatActivity
+import com.budiyev.android.codescanner.*
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.pembayaran.TransaksiPesanan
-import java.lang.Exception
+import kotlinx.android.synthetic.main.activity_scanner__transfer.*
 
 class Scanner_Transfer : AppCompatActivity() {
 
     private lateinit var codeScanner : CodeScanner
-    private val key = "hasil"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner__transfer)
 
         scanner()
-//        finish()
+
+        panah_scanner.setOnClickListener(){
+            finish()
+        }
     }
 
     fun scanner(){
@@ -51,7 +47,7 @@ class Scanner_Transfer : AppCompatActivity() {
                     val a = it.text
                     if (a!= null && a!==""){
                         val i = Intent(this, TransferSaldoScan::class.java)
-                        i.putExtra(key,a)
+                        i.putExtra("SCAN", a)
                         startActivity(i)
                     }
                 } catch (e: Exception){
@@ -73,7 +69,11 @@ class Scanner_Transfer : AppCompatActivity() {
         scannerView.setOnClickListener {
             codeScanner.startPreview()
         }
+
+
     }
+
+
 
     override fun onResume() {
         super.onResume()

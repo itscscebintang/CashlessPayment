@@ -17,13 +17,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="40dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profil"
+                android:text="@string/profil"
                 android:textColor="@color/birumuda"
                 android:textSize="38sp"
                 android:fontFamily="@font/poppins_bold">
@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="e"
+                android:text="@string/e"
                 android:textSize="38sp"
                 android:textColor="@color/oren"
                 android:fontFamily="@font/poppins_bold">
@@ -55,7 +55,6 @@
                 android:id="@+id/txtusername_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="AshleyKennedy"
                 android:textColor="@color/hitam"
                 android:fontFamily="@font/poppins_semi"
                 android:textSize="15sp"
@@ -67,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your username"
+                android:text="@string/your_username"
                 android:textSize="16sp"
                 android:textColor="@color/hitam"
                 android:fontFamily="@font/poppins_medium"
@@ -93,7 +92,7 @@
                    <TextView
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Name"
+                       android:text="@string/name"
                        android:textSize="16sp"
                        android:fontFamily="@font/poppins_semi"
                        android:textColor="@color/hitam"
@@ -105,7 +104,6 @@
                        android:id="@+id/txtname_profile"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:hint="Ashlea Kennedy"
                        android:textAlignment="textEnd"
                        android:textSize="16sp"
                        android:layout_alignParentEnd="true"
@@ -137,7 +135,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="No. KTM / NIK"
+                        android:text="@string/no_ktm_nik"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_semi"
                         android:textColor="@color/hitam">
@@ -148,13 +146,12 @@
                         android:id="@+id/txtnik_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="123456789"
                         android:textAlignment="textEnd"
                         android:layout_centerVertical="true"
                         android:textSize="16sp"
                         android:fontFamily="@font/poppins_medium"
                         android:textColor="@color/hitam"
-                        android:layout_alignParentRight="true">
+                        android:layout_alignParentEnd="true">
 
                     </TextView>
 
@@ -166,8 +163,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tombol_oren"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp">
 
                 <RelativeLayout
@@ -191,13 +188,12 @@
                         android:id="@+id/txtemail_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="AshleaKennedy@gmail.com"
                         android:textSize="16sp"
                         android:textAlignment="textEnd"
                         android:fontFamily="@font/poppins_medium"
                         android:textColor="@color/hitam"
                         android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true">
+                        android:layout_alignParentEnd="true">
 
                     </TextView>
 
@@ -209,17 +205,14 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="LOGOUT"
+                android:text="@string/logout"
                 android:fontFamily="@font/poppins_semi"
                 android:textSize="16sp"
                 android:background="@drawable/tombol_birudongker"
                 android:textColor="@color/putih"
                 android:layout_marginTop="50dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp">
-
-            </Button>
-
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
         </LinearLayout>
 
 </RelativeLayout>

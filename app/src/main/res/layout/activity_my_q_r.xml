@@ -7,17 +7,33 @@
     tools:context=".utama.MyQR"
     android:background="@drawable/tampilan_semua">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MyQR"
-        android:textColor="@color/putih"
-        android:fontFamily="@font/poppins_semi"
-        android:textSize="20dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="35dp">
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp">
 
-    </TextView>
+        <ImageView
+            android:id="@+id/panah_myqr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/panah_back"
+            android:layout_gravity="center_vertical">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MyQR"
+            android:textColor="@color/putih"
+            android:fontFamily="@font/poppins_semi"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp">
+
+        </TextView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -11,6 +11,8 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.teknikugm.dompetft.R
+import com.teknikugm.dompetft.utama.MainActivity
+import kotlinx.android.synthetic.main.activity_scanner.*
 import java.lang.Exception
 
 class Scanner : AppCompatActivity() {
@@ -23,6 +25,10 @@ class Scanner : AppCompatActivity() {
         setContentView(R.layout.activity_scanner)
 
         scanner()
+
+        panah_scanner_transaksi.setOnClickListener(){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     fun scanner(){

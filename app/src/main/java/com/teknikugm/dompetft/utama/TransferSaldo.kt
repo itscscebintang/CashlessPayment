@@ -23,23 +23,49 @@ class TransferSaldo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer_saldo)
 
+        editbalance_transfer.setSpacing(false)
+        editbalance_transfer.setDecimals(false)
+        editbalance_transfer.setDelimiter(false)
+        editbalance_transfer.setSeparator(".")
+
         val a = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "noen")
         nampilinSaldo(a)
 
-        btn_send_transfer.setOnClickListener(){
+        panah_tfman.setOnClickListener(){
+            finish()
+        }
 
-            if (saldo_contoh.text.toString().toInt() < editbalance_transfer.text.toString().toInt()){
-                Toast.makeText(this, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
+        btn_send_transfer.setOnClickListener(){
+            val x = editbalance_transfer.text.toString().replace("Rp","").replace(".","")
+
+            if (saldo_contoh.text.toString().toInt() < x.toInt()){
+                // cek kalo saldo kurang
+
+                AlertDialog.Builder(this@TransferSaldo)
+                    .setMessage("Saldo Anda tidak cukup")
+                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+                        clearData()
+                    }
+                    .show()
+
             } else if(a == editidnumber_transfer.text.toString()){
-               Toast.makeText(this, "Transaksi tidak dapat dilakukan", Toast.LENGTH_SHORT).show()
+                // cek kalo transfer ke diri sndiri
+                AlertDialog.Builder(this@TransferSaldo)
+                    .setMessage("Transaksi tidak dapat dilakukan")
+                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
+                        clearData()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    }
+                    .show()
+
             }
             else {
-                if (editbalance_transfer.text.toString().toInt() < 5000){
+                if (x.toInt() < 5000){
+                    //cek kalo dak memenuhi minimal transaksi
                     Toast.makeText(this, "Transaksi minimal Rp 5000", Toast.LENGTH_SHORT).show()
                 } else {
-//                    transaksi()
                     val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
-                    transfer(username.toString(), editbalance_transfer.text.toString(), editidnumber_transfer.text.toString())
+                    transfer(username.toString(), x, editidnumber_transfer.text.toString())
                 }
             }
         }
@@ -48,52 +74,7 @@ class TransferSaldo : AppCompatActivity() {
             clearData()
             finish()
         }
-    }
 
-    fun transaksi(){
-
-        val preferences = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "noen")
-        val uname_to_transaksi = editidnumber_transfer.text.toString()
-        val amount_transaksi = editbalance_transfer.text.toString()
-
-        class Addtransaction : AsyncTask<Void, Void, String>(){
-
-            lateinit var loading : ProgressDialog
-
-            override fun onPreExecute() {
-                super.onPreExecute()
-                loading=  ProgressDialog.show(this@TransferSaldo, "menambahkan", "tunggu", false, false)
-            }
-
-            override fun doInBackground(vararg params: Void?): String {
-
-                val params= HashMap<String, String?>()
-                params ["username"]= preferences
-                params ["jumlah_payment"]= amount_transaksi
-                params ["username_to"] = uname_to_transaksi
-
-                val rh = RequestHandler()
-                Log.d("Params", params.entries.toString())
-                return rh.sendPostRequest("http://192.168.18.158/Kantin/index.php/Transaksi_saldo/transaksi",params)
-            }
-
-            override fun onPostExecute(result: String?) {
-                super.onPostExecute(result)
-                loading.dismiss()
-
-
-                AlertDialog.Builder(this@TransferSaldo)
-                    .setMessage("Transaksi sebesar $amount_transaksi berhasil")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                        finish()
-                    }
-                    .show()
-            }
-        }
-
-        val f = Addtransaction()
-        f.execute()
     }
 
     fun transfer(username:String, jumlahTransfer:String, username_to:String){
@@ -118,13 +99,13 @@ class TransferSaldo : AppCompatActivity() {
                             val message = response.body()?.message
 
                             AlertDialog.Builder(this@TransferSaldo)
-                                .setMessage("Transaksi sebesar $amount_transaksi berhasil")
+                                .setMessage("Transaksi sebesar Rp$amount_transaksi berhasil")
                                 .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
                                     clearData()
                                     startActivity(Intent(applicationContext, MainActivity::class.java))
                                 }
                                 .show()
-                            Toast.makeText(this@TransferSaldo, message, Toast.LENGTH_SHORT).show()
+
                         } else{
                             Toast.makeText(this@TransferSaldo, message , Toast.LENGTH_SHORT).show()
                         }
@@ -141,7 +122,7 @@ class TransferSaldo : AppCompatActivity() {
 
     fun clearData(){
         editidnumber_transfer.text.clear()
-        editbalance_transfer.text.clear()
+        editbalance_transfer.text?.clear()
     }
 
     fun nampilinSaldo(key : String?){

@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="80dp"
-        android:layout_marginLeft="40dp">
+        android:layout_marginStart="40dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log"
+            android:text="@string/log"
             android:textColor="@color/birumuda"
-            android:textSize="38dp"
+            android:textSize="38sp"
             android:fontFamily="@font/poppins_bold"
             android:textStyle="bold">
 
@@ -28,10 +28,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="In"
+            android:text="@string/in"
             android:textColor="@color/oren"
-            android:layout_marginLeft="5dp"
-            android:textSize="38dp"
+            android:layout_marginStart="5dp"
+            android:textSize="38sp"
             android:fontFamily="@font/poppins_bold"
             android:textStyle="bold">
 
@@ -45,74 +45,128 @@
         android:gravity="center_vertical"
         android:layout_marginTop="150dp">
 
-        <EditText
-            android:id="@+id/editusername_login"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/uname"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="30dp"
-            android:hint="username"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
             android:backgroundTint="@color/birudongker"
-            android:layout_marginBottom="10dp">
+            app:boxCornerRadiusBottomEnd="30dp"
+            app:boxCornerRadiusBottomStart="30dp"
+            app:boxCornerRadiusTopEnd="30dp"
+            app:boxCornerRadiusTopStart="30dp"
+            android:textColorHint="@color/hitam"
+            >
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editusername_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/username"
+                android:backgroundTint="@color/birudongker"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:textColor="@color/hitam"
+                android:layout_marginStart="5dp">
 
-        <EditText
-            android:id="@+id/editpassword_login"
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass"
+            style="@style/LoginTextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:hint="password"
+            android:layout_below="@id/uname"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
             android:backgroundTint="@color/birudongker"
-            android:layout_below="@id/editusername_login"
-            android:layout_marginTop="30dp">
-        </EditText>
+            app:boxCornerRadiusBottomEnd="30dp"
+            app:boxCornerRadiusBottomStart="30dp"
+            app:boxCornerRadiusTopEnd="30dp"
+            app:boxCornerRadiusTopStart="30dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/birudongker"
+            android:textColorHint="@color/hitam"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editpassword_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:backgroundTint="@color/birudongker"
+                android:hint="@string/password"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:textColor="@color/hitam"
+                android:textSize="16sp">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:text="LOGIN"
+            android:layout_marginEnd="33dp"
+            android:layout_marginStart="33dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login"
             android:fontFamily="@font/poppins_bold"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_below="@id/editpassword_login"
+            android:layout_below="@id/pass"
             android:background="@drawable/tombol_birudongker"
             android:textColor="@color/putih"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="40dp">
         </Button>
 
         <TextView
             android:id="@+id/txtfirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First time user?"
+            android:text="@string/first_time_user"
             android:fontFamily="@font/poppins_light"
             android:layout_marginTop="40dp"
             android:layout_below="@id/btn_login"
             android:layout_centerInParent="true"
-            android:textColor="@color/hitam"
-            >
+            android:textColor="@color/hitam">
         </TextView>
 
-        <TextView
+        <LinearLayout
             android:id="@+id/txtsignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:textColorHint="@color/birudongker"
-            android:text="Sign Up"
-            android:fontFamily="@font/poppins_bold"
-            android:layout_centerInParent="true"
+            android:orientation="horizontal"
             android:layout_below="@id/txtfirst"
-            android:textColor="@color/birudongker">
+            android:layout_centerInParent="true">
 
-        </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/birudongker"
+                android:text="@string/sign"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/birumuda">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:textColorHint="@color/birudongker"
+                android:text="@string/up"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/oren">
+            </TextView>
+
+        </LinearLayout>
 
     </RelativeLayout>
 

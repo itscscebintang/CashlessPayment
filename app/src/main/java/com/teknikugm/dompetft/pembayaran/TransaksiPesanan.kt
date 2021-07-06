@@ -21,47 +21,51 @@ import kotlin.random.Random
 
 class TransaksiPesanan : AppCompatActivity() {
 
-    private val key= "hasil"
     private var result : String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi_pesanan)
 
-        val tt = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(
+        val uname = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(
             Constant.username, "noen")
-        nampilinSaldo(tt)
+        nampilinSaldo(uname)
 
         val totalOrder = intent.getStringExtra("hasil")
-        hasil_scan.text = totalOrder
-        total_order.text = totalOrder
+        // hasil_scan ni untuk nampilin pake delimeter tu
+        hasil_scan.text = Currency.toRupiahFormat2(totalOrder.toString().toInt()).replace("$", "Rp").replace(",", ".")
+        //cheat_hasilScan ni untuk perhitungan
+        cheat_hasilScan.text = totalOrder
+        cheat_tanpaPromo.text = totalOrder
+        totalPembeli.text = Currency.toRupiahFormat2(totalOrder.toString().toInt()).replace("$", "Rp").replace(",", ".")
 
-        btn_promo.setOnClickListener(){
-            val a = hasil_scan.text.toString() // ini untuk ambil total order biar bisa dibawa ke list promo, untuk dicek min belanjanya tu
+        relativeoren.setOnClickListener(){
+            val a = cheat_hasilScan.text.toString() // ini untuk ambil total order biar bisa dibawa ke list promo, untuk dicek min belanjanya tu
             val i = Intent(this, Promo::class.java) // ini dia nge intent ke kelas promo
-            i.putExtra(key, a) // ini untuk bawa nilainya, kek key tu extrasnya, jdi kayak nyambungin yg nilai dibawa ni nnti di activity tujuannya taroknya dimana
+            i.putExtra("hasil", a) // ini untuk bawa nilainya, kek key tu extrasnya, jdi kayak nyambungin yg nilai dibawa ni nnti di activity tujuannya taroknya dimana
             i.putExtra("kode_promo", result)
             startActivityForResult((i), REQUEST_CODE) // tu ini startactivity kalo bawa nilai, jdi startactivityforresult
         }
 
         btn_pay_pesanan.setOnClickListener(){
+            val a = cheat_hasilPromo.text.toString()
+            val totalScan = cheat_hasilScan.text.toString().toInt()
+            val persenanPenjual = totalScan*0.85
+            val totalPenjual = Currency.toRupiahFormat2(persenanPenjual.toInt()).replace("$", "").replace(".", "").replace(",", "")
+            val persenanFT = (totalScan*0.15).toInt()
 
-            val  promo4 = 90
-            val a = test_promo.text.toString()
-
-            if(total_promo.text.toString().isEmpty()){
-                if(saldo_anda.text.toString().toInt() < total_order.text.toString().toInt()){
-                    Toast.makeText(this, "Saldo anda tidak cukup", Toast.LENGTH_SHORT).show()
-                } else if (a.isEmpty()){
-                    val b = 0
-                    detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(), b.toString())
-
-                }else {
-                    detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(), a)
-                }
-            }else{
-                detailTransaksi(total_order.text.toString(), hasil_scan.text.toString(),a)
+            if(saldo_anda.text.toString().toInt() < cheat_tanpaPromo.text.toString().toInt()){
+                Toast.makeText(this, "Saldo anda tidak cukup", Toast.LENGTH_SHORT).show()
+            }else if(cheat_hasilPromo.text.toString( ).isEmpty()){
+                detailTransaksi(cheat_tanpaPromo.text.toString(), totalPenjual, persenanFT.toString())
+            } else {
+                val totalFT = (persenanFT - a.toInt()).toString()
+                detailTransaksi(cheat_totalPembeli.text.toString(), totalPenjual, totalFT)
             }
+        }
+
+        panah_transaksi.setOnClickListener(){
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
@@ -70,49 +74,35 @@ class TransaksiPesanan : AppCompatActivity() {
 
             if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
                 val dataPromo = data?.getSerializableExtra("promo") as DataItem
-                val jumlahpromo = dataPromo.jumlahPromo
                 result = dataPromo.kodePromo
                 val persentasePromo = dataPromo.persentasePromo
 
                 test_persentase.text = persentasePromo.toString()
 
-                val hasilScan = hasil_scan.text.toString().toInt()
-                val promo1 = persentasePromo.toString().toInt()
+                val hasilScan = cheat_hasilScan.text.toString().toInt()
+                val promo1 = test_persentase.text.toString().toInt()
                 val promo2 = promo1*0.01
                 val promo = promo2*hasilScan
-                total_promo.setText("Promo Anda Rp $promo")
 
+                val hasildiskon = (promo1*0.01)*hasilScan
 
-                test_promo.text = Currency.toRupiahFormat2(promo.toInt()).replace("$", "").replace(".", "").replace(",", "")
+                cheat_hasilPromo.text = Currency.toRupiahFormat2(hasildiskon.toInt()).replace("$", "").replace(".", "").replace(",", "")
+                jumlahPromo.text = Currency.toRupiahFormat2(hasildiskon.toInt()).replace("$", "-Rp").replace(",", ".")
 
                 if(promo > hasilScan){
-                    total_order.setText("0")
+                    cheat_totalPembeli.setText("0")
                 } else {
                     val hasil = hasilScan - promo
-                    total_order.text =  Currency.toRupiahFormat2(hasil.toInt()).replace("$", "").replace(".", "").replace(",", "")
+                    cheat_totalPembeli.text = Currency.toRupiahFormat2(hasil.toInt()).replace("$", "").replace(".", "").replace(",", "")
+                    totalPembeli.text =  Currency.toRupiahFormat2(hasil.toInt()).replace("$", "Rp").replace(",", ".")
                 }
 
                 test_kode_promo.text = result
-
-
-//            if( x > y){
-//                total_order.setText("0")
-//            } else {
-//                val b = hasil_scan.text.toString().toInt()
-//                val promo = (persentasePromo.toString().toInt() / 100) * b
-//
-//                val a = jumlahpromo.toString().toInt()
-//
-//                val c = b-promo
-//
-//                total_order.text = c.toString()
-//                test_kode_promo.text = result
-//            }
         }
     }
 
     companion object {
-        const val REQUEST_CODE = 2502
+        const val   REQUEST_CODE = 2502
     }
 
     fun nampilinSaldo(key : String?){
@@ -123,7 +113,7 @@ class TransaksiPesanan : AppCompatActivity() {
         myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
 
             override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
-                Toast.makeText(this@TransaksiPesanan, "Gagal", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@TransaksiPesanan, "Gagal memuat saldo", Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
@@ -155,25 +145,23 @@ class TransaksiPesanan : AppCompatActivity() {
                         if (response.isSuccessful){
                             val message = response.body()?.message
 
-                            val a = total_order.text.toString().toInt()
+                            val a = cheat_tanpaPromo.text.toString().toInt()
                             val b = saldo_anda.text.toString().toInt()
-                            val c = b - a
+                            val sisaSaldo = b - a
 
                             val d = Currency.toRupiahFormat2(a).replace("$", "Rp").replace(",", ".")
-                            val e = Currency.toRupiahFormat2(c).replace("$", "Rp").replace(",", ".")
+                            val e = Currency.toRupiahFormat2(sisaSaldo).replace("$", "Rp").replace(",", ".")
 
                             AlertDialog.Builder(this@TransaksiPesanan)
-                                .setTitle("Transaksi Pembayaran senilai $d berhasil ")
+                                .setTitle("Transaksi pembayaran senilai $d berhasil ")
                                 .setMessage("Saldo Anda sekarang : $e")
-                                .setPositiveButton("OK") { dialog, whichButton ->
+                                .setPositiveButton("Ok") { dialog, whichButton ->
                                     startActivity(Intent(this@TransaksiPesanan, MainActivity::class.java))
                                 }
-                                .setNegativeButton("CLOSE") { dialog, whichButton ->
+                                .setNegativeButton("Tutup") { dialog, whichButton ->
                                     startActivity(Intent(this@TransaksiPesanan, MainActivity::class.java))
                                 }
                                 .show()
-
-                            Toast.makeText(this@TransaksiPesanan, message, Toast.LENGTH_SHORT).show()
                         }else{
                             Toast.makeText(this@TransaksiPesanan, message, Toast.LENGTH_SHORT).show()
                         }

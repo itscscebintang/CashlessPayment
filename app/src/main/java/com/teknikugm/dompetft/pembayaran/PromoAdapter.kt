@@ -14,11 +14,10 @@ import kotlinx.android.synthetic.main.activity_promo_adapter.view.*
 class PromoAdapter(private var data : List<DataItem?>?, private var context : Context, private var onclick : (DataItem?)->Unit) : RecyclerView.Adapter<PromoAdapter.ViewHolder>() {
 
     class ViewHolder (item : View) : RecyclerView.ViewHolder(item) {
+
         val kodepromo = item.kode_promo
-        val jumlahpromo = item.jumlah_promo
         val minbelanja = item.min_belanja
         val persentasepromo = item.persentase_promo
-//        val statuspromo = item.status_promo
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromoAdapter.ViewHolder {
@@ -29,11 +28,10 @@ class PromoAdapter(private var data : List<DataItem?>?, private var context : Co
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataItem = data?.get(position)
+        val b = 1
         holder.kodepromo.text = dataItem?.kodePromo
-        holder.jumlahpromo.text = dataItem?.jumlahPromo
         holder.minbelanja.text = dataItem?.minBelanja
         holder.persentasepromo.text = dataItem?.persentasePromo
-//        holder.statuspromo.text = dataItem?.statusPromo
         holder.itemView.setOnClickListener() { onclick(dataItem) }
     }
 

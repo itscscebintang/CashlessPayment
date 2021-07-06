@@ -63,7 +63,7 @@ class Register : AppCompatActivity() {
             
         }
 
-        btn_loginreg.setOnClickListener(){
+        txtlogin.setOnClickListener(){
             startActivity(Intent(this, Login::class.java))
         }
     }

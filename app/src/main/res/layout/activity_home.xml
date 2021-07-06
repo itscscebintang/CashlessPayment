@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginStart="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:id="@+id/txtrp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp "
+                android:text="@string/rp"
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="30sp"
                 android:textColor="@color/hitam"
@@ -37,13 +37,13 @@
                 android:textSize="30sp"
                 android:textColor="@color/hitam"
                 android:textStyle="bold"
-                android:layout_toRightOf="@id/txtrp">
+                android:layout_toEndOf="@id/txtrp">
             </TextView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current balance"
+                android:text="@string/current_balance"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_below="@id/txtrp"
                 android:textSize="15sp"
@@ -56,15 +56,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_pay_home"
-                android:layout_toLeftOf="@id/btn_topup_home"
+                android:layout_toStartOf="@id/btn_topup_home"
                 android:orientation="horizontal"
-                android:layout_marginRight="2dp">
+                android:layout_marginEnd="2dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="Send"
+                    android:text="@string/send"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/putih"
                     android:textStyle="bold"
@@ -78,13 +78,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_topup_home"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Top Up"
+                    android:text="@string/top_up"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -105,7 +105,7 @@
         android:scrollbars="none">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
@@ -138,7 +138,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semi"
-                        android:text="My"
+                        android:text="@string/my"
                         android:textColor="@color/birumuda"
                         android:textSize="20sp"
                         android:textStyle="bold">
@@ -148,12 +148,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="QR"
+                        android:text="@string/qr"
                         android:fontFamily="@font/poppins_semi"
                         android:textColor="@color/oren"
                         android:textSize="20sp"
                         android:textStyle="bold">
-
                     </TextView>
 
                 </LinearLayout>
@@ -167,7 +166,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_light"
-                    android:text="For an ease of transfer balance, you can now scan the QR code! Tap to see your QR code."
+                    android:text="@string/for_an_ease_of_transfer_balance_you_can_now_scan_the_qr_code_tap_to_see_your_qr_code"
                     android:textAlignment="center">
 
                 </TextView>
@@ -178,7 +177,7 @@
                 android:id="@+id/card_transfer"
                 android:layout_width="200dp"
                 android:layout_height="250dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:background="@drawable/shape_cekung">
 
                 <ImageView
@@ -203,10 +202,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Transfer"
+                        android:text="@string/transfer"
                         android:fontFamily="@font/poppins_semi"
                         android:textColor="@color/oren"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -214,11 +213,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Balance"
+                        android:text="@string/balance"
                         android:fontFamily="@font/poppins_semi"
                         android:textColor="@color/hitam"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
+                        android:layout_marginStart="3dp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -234,7 +233,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_light"
-                    android:text="Now you can transfer your balance to a friend within the app! Click for more"
+                    android:text="@string/now_you_can_transfer_your_balance_to_a_friend_within_the_app_click_for_more"
                     android:textAlignment="center">
 
                 </TextView>
@@ -246,13 +245,13 @@
                 android:layout_width="200dp"
                 android:layout_height="250dp"
                 android:background="@drawable/shape_cekung"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="40dp">
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="40dp">
 
                 <ImageView
                     android:id="@+id/image_promo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/icon_promo"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="25dp">
@@ -270,9 +269,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Promo"
+                        android:text="@string/promo"
                         android:fontFamily="@font/poppins_semi"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textColor="@color/birumuda"
                         android:textStyle="bold">
 
@@ -281,9 +280,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="tion"
+                        android:text="@string/tion"
                         android:fontFamily="@font/poppins_semi"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textColor="@color/hitam"
                         android:textStyle="bold">
 
@@ -297,7 +296,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
                     android:fontFamily="@font/poppins_light"
-                    android:text="Claim and redeem the voucher for purchasing within the app! Click for more."
+                    android:text="@string/claim_and_redeem_the_voucher_for_purchasing_within_the_app_click_for_more"
                     android:layout_below="@+id/promo"
                     android:layout_centerHorizontal="true"
                     android:textAlignment="center"

@@ -7,44 +7,128 @@
     tools:context=".pembayaran.Promo"
     android:background="@drawable/tampilan_semua">
 
+    <ImageView
+        android:id="@+id/gambarpromo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true">
+
+    </ImageView>
+
+    <LinearLayout
+        android:id="@+id/judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp">
+
+        <ImageView
+            android:id="@+id/panah_promo"
+            android:layout_width="30dp"
+            android:layout_height="34dp"
+            android:src="@drawable/panah_back"
+            android:layout_gravity="center_vertical">
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Promo"
+            android:textColor="@color/putih"
+            android:fontFamily="@font/poppins_semi"
+            android:textSize="20sp"
+            android:layout_marginStart="30dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/ops"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:fontFamily="@font/poppins_semi"
+            android:textColor="@color/hitam"
+            android:textSize="24sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/penjelasan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ops"
+            android:textAlignment="center"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/hitam"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp">
+
+        </TextView>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@id/judul">
 
         <TextView
-            android:id="@+id/judul"
-            android:layout_width="wrap_content"
+            android:id="@+id/banyakpromo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/my_promo"
-            android:layout_marginTop="35dp"
-            android:layout_marginLeft="70dp"
-            android:fontFamily="@font/poppins_semi"
-            android:textColor="@color/putih"
-            android:textSize="20sp" />
+            android:textSize="0sp">
+
+        </TextView>
 
         <TextView
             android:id="@+id/ava_promos"
-            android:layout_below="@id/judul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/available_promos"
             android:fontFamily="@font/poppins_medium"
             android:textSize="20sp"
+            android:text="@string/available_promos"
             android:layout_marginTop="70dp"
             android:textColor="@color/hitam"
             android:layout_marginStart="20dp">
 
         </TextView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
-        </androidx.recyclerview.widget.RecyclerView>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh_promo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
     </LinearLayout>
 
