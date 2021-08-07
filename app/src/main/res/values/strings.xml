@@ -27,7 +27,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="or">OR</string>
+    <string name="or111">OR</string>
     <string name="login_satulagi">LOGIN</string>
     <string name="full_name">Full name</string>
     <string name="sign44">Sign</string>
@@ -42,7 +42,7 @@
     <string name="now_you_can_transfer_your_balance_to_a_friend_within_the_app_click_for_more">Now you can transfer your balance to a friend within the app! Click for more</string>
     <string name="balance">Balance</string>
     <string name="transfer">Transfer</string>
-    <string name="for_an_ease_of_transfer_balance_you_can_now_scan_the_qr_code_tap_to_see_your_qr_code">For an ease of transfer balance, you can now scan the QR code! Tap to see your QR code.</string>
+    <string name="for_an_ease_of_transfer_balance_you_can_now_scan_the_qr_code_tap_to_see_your_qr_code">For an ease of transfer balance!</string>
     <string name="qr">QR</string>
     <string name="my">My</string>
     <string name="rp">Rp</string>
@@ -78,4 +78,15 @@
     <string name="sign">Sign</string>
     <string name="up2">Up</string>
     <string name="no_discount">No discount</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="see_your_qr_code">See your QR Code</string>
+    <string name="send_your_balance">Send your Balance</string>
+    <string name="see_available_promos">See Available Promos</string>
+    <string name="transfer_balance2">Transfer Balance</string>
+    <string name="scan_qr_code_to_transfer_your_balance_to_a_friend">Scan Your Friend\'s QR Code!</string>
+    <string name="or_scan_your_friend_s_qr_code_here">Or Scan your Friend\'s QR Code Here!</string>
+    <string name="or">Or</string>
+    <string name="insert_your_friend_s_username_here">Insert your Friend\'s Username Here!</string>
+    <string name="using_username">Send Balance by Using Username</string>
 </resources>

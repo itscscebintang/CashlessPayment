@@ -51,31 +51,31 @@
                 android:textStyle="bold">
             </TextView>
 
-            <RelativeLayout
-                android:id="@+id/btn_send_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_pay_home"
-                android:layout_toStartOf="@id/btn_topup_home"
-                android:orientation="horizontal"
-                android:layout_marginEnd="2dp">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/btn_send_home"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/shape_pay_home"-->
+<!--                android:layout_toStartOf="@id/btn_topup_home"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginEnd="2dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/send"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/putih"
-                    android:textStyle="bold"
-                    android:textSize="15sp">
-                </TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:text="@string/send"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:textColor="@color/putih"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="15sp">-->
+<!--                </TextView>-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/btn_topup_home"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_topup_home"
                 android:layout_alignParentEnd="true"
@@ -111,72 +111,87 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp">
 
-            <RelativeLayout
-                android:id="@+id/card_qr"
-                android:layout_width="200dp"
-                android:layout_height="250dp"
-                android:background="@drawable/shape_cekung">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/card_qr"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="250dp"-->
+<!--                android:background="@drawable/shape_cekung">-->
 
-                <ImageView
-                    android:id="@+id/image_qr_code"
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/icon_qr_code" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/image_qr_code"-->
+<!--                    android:layout_width="80sp"-->
+<!--                    android:layout_height="80sp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="25dp"-->
+<!--                    android:background="@drawable/ic_qrcode_1" />-->
 
-                <LinearLayout
-                    android:id="@+id/myqr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/image_qr_code"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/myqr"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/image_qr_code"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semi"
-                        android:text="@string/my"
-                        android:textColor="@color/birumuda"
-                        android:textSize="20sp"
-                        android:textStyle="bold">
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/poppins_semi"-->
+<!--                        android:text="@string/my"-->
+<!--                        android:textColor="@color/birumuda"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold">-->
 
-                    </TextView>
+<!--                    </TextView>-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/qr"
-                        android:fontFamily="@font/poppins_semi"
-                        android:textColor="@color/oren"
-                        android:textSize="20sp"
-                        android:textStyle="bold">
-                    </TextView>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/qr"-->
+<!--                        android:fontFamily="@font/poppins_semi"-->
+<!--                        android:textColor="@color/oren"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold">-->
+<!--                    </TextView>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/myqr"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="@string/for_an_ease_of_transfer_balance_you_can_now_scan_the_qr_code_tap_to_see_your_qr_code"
-                    android:textAlignment="center">
+<!--                <TextView-->
+<!--                    android:id="@+id/tapyourqr"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/myqr"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:text="@string/see_your_qr_code"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textColor="@color/hitam">-->
+<!--                </TextView>-->
 
-                </TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/tapyourqr"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:fontFamily="@font/poppins_light"-->
+<!--                    android:text="@string/for_an_ease_of_transfer_balance_you_can_now_scan_the_qr_code_tap_to_see_your_qr_code"-->
+<!--                    android:textAlignment="center">-->
 
-            </RelativeLayout>
+<!--                </TextView>-->
+
+<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/card_transfer"
                 android:layout_width="200dp"
-                android:layout_height="250dp"
+                android:layout_height="270dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/shape_cekung">
 
@@ -217,12 +232,28 @@
                         android:fontFamily="@font/poppins_semi"
                         android:textColor="@color/hitam"
                         android:textSize="20sp"
-                        android:layout_marginStart="3dp"
+                        android:layout_marginStart="4dp"
                         android:textStyle="bold">
 
                     </TextView>
 
                 </LinearLayout>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tfbalance"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/transferbalance"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:text="@string/send_your_balance"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textColor="@color/hitam">-->
+<!--                </TextView>-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -231,7 +262,6 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="@string/now_you_can_transfer_your_balance_to_a_friend_within_the_app_click_for_more"
                     android:textAlignment="center">
@@ -243,7 +273,7 @@
             <RelativeLayout
                 android:id="@+id/card_promo"
                 android:layout_width="200dp"
-                android:layout_height="250dp"
+                android:layout_height="270dp"
                 android:background="@drawable/shape_cekung"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="40dp">
@@ -290,17 +320,32 @@
 
                 </LinearLayout>
 
+<!--                <TextView-->
+<!--                    android:id="@+id/katapromo"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/promo"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:text="@string/see_available_promos"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textColor="@color/hitam">-->
+<!--                </TextView>-->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="@string/claim_and_redeem_the_voucher_for_purchasing_within_the_app_click_for_more"
                     android:layout_below="@+id/promo"
                     android:layout_centerHorizontal="true"
-                    android:textAlignment="center"
-                    android:layout_marginTop="10dp">
+                    android:textAlignment="center">
 
                 </TextView>
 

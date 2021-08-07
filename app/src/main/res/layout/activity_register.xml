@@ -76,7 +76,8 @@
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
                         android:layout_marginStart="5dp"
-                        android:inputType="textCapWords">
+                        android:inputType="textCapWords"
+                        android:maxLines="1">
                     </com.google.android.material.textfield.TextInputEditText>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +104,9 @@
                         android:backgroundTint="@color/birudongker"
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp">
+                        android:layout_marginStart="5dp"
+                        android:inputType="text"
+                        android:maxLines="1">
 
                     </com.google.android.material.textfield.TextInputEditText>
 
@@ -132,7 +135,8 @@
                         android:backgroundTint="@color/birudongker"
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp">
+                        android:layout_marginStart="5dp"
+                        android:maxLines="1">
 
                     </com.google.android.material.textfield.TextInputEditText>
 
@@ -160,7 +164,9 @@
                         android:backgroundTint="@color/birudongker"
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp">
+                        android:layout_marginStart="5dp"
+                        android:inputType="text"
+                        android:maxLines="1">
 
                     </com.google.android.material.textfield.TextInputEditText>
 
@@ -191,7 +197,8 @@
                         android:backgroundTint="@color/birudongker"
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp">
+                        android:layout_marginStart="5dp"
+                        android:maxLines="1">
 
                     </com.google.android.material.textfield.TextInputEditText>
 
@@ -222,7 +229,8 @@
                         android:backgroundTint="@color/birudongker"
                         android:textSize="16sp"
                         android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp">
+                        android:layout_marginStart="5dp"
+                        android:maxLines="1">
 
                     </com.google.android.material.textfield.TextInputEditText>
 

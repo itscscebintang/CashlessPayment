@@ -65,4 +65,5 @@ dependencies {
 
     implementation 'me.abhinay.input:currency-edittext:1.1'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
+
 }

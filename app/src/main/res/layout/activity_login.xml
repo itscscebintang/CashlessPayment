@@ -67,6 +67,7 @@
                 android:hint="@string/username"
                 android:backgroundTint="@color/birudongker"
                 android:textSize="16sp"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/hitam"
                 android:layout_marginStart="5dp">

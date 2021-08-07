@@ -41,6 +41,8 @@ class Login : AppCompatActivity() {
                 return@setOnClickListener
             } else
                 cekLogin(editusername_login.text.toString(), editpassword_login.text.toString())
+
+            finish()
         }
     }
 
@@ -51,7 +53,7 @@ class Login : AppCompatActivity() {
                 override fun onFailure(call: retrofit2.Call<ResponseLogin>, t: Throwable) {
                     Toast.makeText(
                         this@Login,
-                        "Username dan Password salah!",
+                        "Username atau Password salah!",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

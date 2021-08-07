@@ -8,11 +8,12 @@
     android:background="@drawable/tampilan_semua">
 
     <LinearLayout
+        android:id="@+id/atas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="35dp"
-        android:layout_marginLeft="30dp">
+        android:layout_marginStart="30dp">
 
         <ImageView
             android:id="@+id/panah_scanner"
@@ -25,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transfer Balance"
+            android:text="@string/transfer_balance"
             android:textColor="@color/putih"
             android:fontFamily="@font/poppins_semi"
             android:textSize="20sp"
@@ -37,13 +38,12 @@
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="450dp"
+        android:layout_height="470dp"
         app:autoFocusButtonColor="@color/birudongker"
         app:autoFocusButtonVisible="true"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/atas"
+        android:layout_marginTop="40dp"
         app:flashButtonColor="@color/birudongker"
         app:flashButtonVisible="true"
         app:frameColor="@color/birudongker"
@@ -55,17 +55,53 @@
         app:frameThickness="5dp"
         app:maskColor="@color/background"/>
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Scan QR Code to Transfer Your Balance to A Friend!"
-        android:layout_below="@id/scanner_view"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/poppins_semi"
-        android:textColor="@color/hitam"
-        android:textSize="20sp"
-        android:textAlignment="center">
+<!--    <TextView-->
+<!--        android:id="@+id/tulisan111"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/scan_qr_code_to_transfer_your_balance_to_a_friend"-->
+<!--        android:layout_below="@id/scanner_view"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:fontFamily="@font/poppins_semi"-->
+<!--        android:textColor="@color/hitam"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textAlignment="center">-->
+<!--    </TextView>-->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="40dp"
+    android:layout_marginStart="40dp"
+    android:layout_below="@id/scanner_view"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical"
+    >
 
+    <TextView
+        android:id="@+id/tulisan22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/hitam"
+        android:layout_gravity="center_horizontal">
     </TextView>
+
+    <Button
+        android:id="@+id/using_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/using_username"
+        android:background="@drawable/tombol_birudongker3"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_semi"
+        android:textColor="@color/putih"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal">
+
+    </Button>
+
+</LinearLayout>
 
 </RelativeLayout>

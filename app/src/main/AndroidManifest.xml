@@ -44,7 +44,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".utama.Login"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".utama.SplashScreen"
             android:screenOrientation="portrait">

@@ -32,20 +32,16 @@ class Home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        btn_send_home.setOnClickListener(){
-            startActivity(Intent(context, Scanner_Transfer::class.java))
-        }
+//        btn_send_home.setOnClickListener(){
+//            startActivity(Intent(context, Scanner_Transfer::class.java))
+//        }
 
         btn_topup_home.setOnClickListener(){
             startActivity(Intent(context, TopUp::class.java))
         }
 
-        card_qr.setOnClickListener(){
-            startActivity(Intent(context, MyQR::class.java))
-        }
-
         card_transfer.setOnClickListener(){
-            startActivity(Intent(context, TransferSaldo::class.java))
+            startActivity(Intent(context, Scanner_Transfer::class.java))
         }
 
         card_promo.setOnClickListener(){

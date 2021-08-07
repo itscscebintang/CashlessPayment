@@ -40,18 +40,11 @@ class Profile : Fragment() {
                 .setNegativeButton("Batal") { dialog, whichButton ->
                 }
                 .show()
+
         }
 
-        val a = context?.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "None")
-
-        nampilinSaldo_Profile(a.toString())
-
-    }
-
-    fun nampilinSaldo_Profile (key : String){
-        lateinit var myAPI: API
-        val retrofit = RetrofitClient.instance
-        myAPI = retrofit.create(API::class.java)
-
+        card_qr.setOnClickListener(){
+            startActivity(Intent(context, MyQR::class.java))
+        }
     }
 }

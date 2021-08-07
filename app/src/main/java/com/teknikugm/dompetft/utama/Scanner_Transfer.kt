@@ -21,6 +21,10 @@ class Scanner_Transfer : AppCompatActivity() {
         panah_scanner.setOnClickListener(){
             finish()
         }
+
+        using_username.setOnClickListener(){
+            startActivity(Intent(this, TransferSaldo::class.java))
+        }
     }
 
     fun scanner(){
@@ -55,6 +59,8 @@ class Scanner_Transfer : AppCompatActivity() {
                     Toast.makeText(application, "ERROR, TRY AGAIN !", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            finish()
         }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

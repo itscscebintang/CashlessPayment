@@ -39,7 +39,7 @@ class TopUp : AppCompatActivity() {
 
         btn_cancel_topup.setOnClickListener(){
             clearData()
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         panah_topup.setOnClickListener(){

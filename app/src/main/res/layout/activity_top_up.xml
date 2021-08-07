@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:hint="@string/enter_your_top_up_amount"
+                android:hint="@string/min_rp5_000"
                 android:inputType="number"
                 android:backgroundTint="@color/putih"
                 android:layout_marginStart="20dp"

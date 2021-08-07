@@ -60,6 +60,8 @@ class Register : AppCompatActivity() {
                     editemail_register.text.toString(),
                     editktm_register.text.toString()
             )
+
+            finish()
             
         }
 

@@ -63,6 +63,8 @@ class Scanner : AppCompatActivity() {
                      Toast.makeText(application, "ERROR, TRY AGAIN !", Toast.LENGTH_SHORT).show()
                  }
              }
+
+             finish()
          }
 
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
