@@ -4,16 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pembayaran.Promo"
+    tools:context=".utama.Promo"
     android:background="@drawable/tampilan_semua">
 
-    <ImageView
-        android:id="@+id/gambarpromo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true">
+    <ProgressBar
+        android:id="@+id/pbpromo"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp" />
 
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:id="@+id/gambarpromo"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_centerInParent="true">-->
+
+<!--    </ImageView>-->
 
     <LinearLayout
         android:id="@+id/judul"
@@ -51,7 +59,7 @@
         android:layout_marginStart="50dp">
 
         <ImageView
-            android:id="@+id/icon"
+            android:id="@+id/gambarpromo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true">
@@ -61,7 +69,7 @@
             android:id="@+id/ops"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/icon"
+            android:layout_below="@id/gambarpromo"
             android:layout_marginTop="15dp"
             android:textAlignment="center"
             android:fontFamily="@font/poppins_semi"
@@ -92,20 +100,12 @@
         android:layout_below="@id/judul">
 
         <TextView
-            android:id="@+id/banyakpromo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="0sp">
-
-        </TextView>
-
-        <TextView
             android:id="@+id/ava_promos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
             android:textSize="20sp"
-            android:text="@string/available_promos"
+            android:text=""
             android:layout_marginTop="70dp"
             android:textColor="@color/hitam"
             android:layout_marginStart="20dp">

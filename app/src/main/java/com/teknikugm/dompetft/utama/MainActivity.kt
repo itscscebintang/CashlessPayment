@@ -1,26 +1,63 @@
 package com.teknikugm.dompetft.utama
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.pembayaran.Scanner
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.SessionManager
+import com.teknikugm.dompetft.model.DataUser
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private var doubleBackToExitPressedOnce: Boolean = false
+    private lateinit var apiClient: ApiClient
+    private lateinit var sessionManager: SessionManager
+    var profilResponse: DataUser? = DataUser("","",null,null)
+    private var i = 0
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        pbmain.visibility = View.VISIBLE
+        i = pbmain.progress
+        Thread(Runnable {
+            // this loop will run until the value of i becomes 99
+            while (i < 100) {
+                i += 1
+                // Update the progress bar and display the current value
+                handler.post(Runnable {
+                    pbmain.progress = i
+                    // setting current progress to the textview
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, Home())
+                        .commit()
+                })
+                try {
+                    Thread.sleep(100)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+            pbmain.visibility = View.INVISIBLE
+
+        }).start()
+
+
 
         if (ContextCompat.checkSelfPermission(this@MainActivity,
                 Manifest.permission.CAMERA) !==
@@ -36,12 +73,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnscan.setOnClickListener(){
-            startActivity(Intent(this,Scanner::class.java))
+            startActivity(Intent(this, Scanner::class.java))
         }
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, Home())
-            .commit()
 
         bottomnav.setOnNavigationItemSelectedListener {
             when(it.itemId){
@@ -58,21 +91,39 @@ class MainActivity : AppCompatActivity() {
                         .commit()
                     return@setOnNavigationItemSelectedListener true
                 }
-
             }
             false
         }
+    }
 
+    //REVISI
+    fun getProfile(): DataUser? {
+        apiClient = ApiClient()
+        sessionManager = SessionManager(this)
+
+        apiClient.getApiService(this).getProfile()
+            .enqueue(object : Callback<DataUser> {
+                override fun onFailure(call: Call<DataUser>, t: Throwable) {}
+
+                override fun onResponse(call: Call<DataUser>, response: Response<DataUser>) {
+                    profilResponse = response.body()
+                    sessionManager.saveUsername(profilResponse?.username)
+                    sessionManager.saveProfile(profilResponse)
+                }
+            })
+        return profilResponse
     }
 
     override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            return
-        }
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
-        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
+        AlertDialog.Builder(this)
+            .setMessage("Tutup Aplikasi DompetFT?")
+            .setPositiveButton("Ya") { dialog, whichButton ->
+                finishAffinity()
+            }
+            .setNegativeButton("Batal") { dialog, whichButton ->
+
+            }
+            .show()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
@@ -92,5 +143,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }

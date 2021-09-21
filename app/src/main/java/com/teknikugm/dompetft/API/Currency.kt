@@ -1,9 +1,6 @@
-package com.teknikugm.dompetft.retrofit
+package com.teknikugm.dompetft.API
 
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
-import java.util.*
 
 object Currency {
 

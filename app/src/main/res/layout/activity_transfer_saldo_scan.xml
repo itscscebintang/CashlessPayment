@@ -104,6 +104,22 @@
 
             </TextView>
 
+            <TextView
+                android:id="@+id/saldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="0sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/usernamescan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="0sp">
+
+            </TextView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -112,6 +128,21 @@
             android:orientation="vertical"
             android:layout_centerInParent="true"
             android:layout_below="@id/tulisan11">
+
+<!--            <EditText-->
+<!--                android:id="@+id/edit_amount_payqr"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:hint="@string/min_rp5_000"-->
+<!--                android:textColorHint="@color/putih"-->
+<!--                android:inputType="number"-->
+<!--                android:textColor="@color/putih"-->
+<!--                android:fontFamily="@font/poppins_medium"-->
+<!--                android:backgroundTint="@color/putih"-->
+<!--                android:maxLines="1"/>-->
 
             <me.abhinay.input.CurrencyEditText
                 android:id="@+id/edit_amount_payqr"

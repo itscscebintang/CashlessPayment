@@ -1,24 +1,28 @@
 package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.ContextWrapper
 import android.content.Intent
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.SessionManager
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.pembayaran.Response_Detail
-import com.teknikugm.dompetft.retrofit.*
-import kotlinx.android.synthetic.main.activity_home.*
+import com.teknikugm.dompetft.model.FilterUser
+import com.teknikugm.dompetft.model.ResponseTransaksi
+import com.teknikugm.dompetft.model.TransferItem
 import kotlinx.android.synthetic.main.activity_transfer_saldo.*
-import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
 import retrofit2.Response
 
 class TransferSaldo : AppCompatActivity() {
+
+    private var listUser = mutableListOf<FilterUser>()
+    private lateinit var sessionManager : SessionManager
+    private var saldo : String? = null
+    private var transfer : String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transfer_saldo)
@@ -28,46 +32,72 @@ class TransferSaldo : AppCompatActivity() {
         editbalance_transfer.setDelimiter(false)
         editbalance_transfer.setSeparator(".")
 
-        val a = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "noen")
-        nampilinSaldo(a)
+        tampilUser()
+        getSaldo()
 
         panah_tfman.setOnClickListener(){
-            finish()
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
+        Log.d("username", username.text.toString())
+        print(username.text)
+
         btn_send_transfer.setOnClickListener(){
-            val x = editbalance_transfer.text.toString().replace("Rp","").replace(".","")
+            val transfer = editbalance_transfer.text.toString().replace(".","")
 
-            if (saldo_contoh.text.toString().toInt() < x.toInt()){
-                // cek kalo saldo kurang
-
-                AlertDialog.Builder(this@TransferSaldo)
-                    .setMessage("Saldo Anda tidak cukup")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                    }
-                    .show()
-
-            } else if(a == editidnumber_transfer.text.toString()){
-                // cek kalo transfer ke diri sndiri
+            if(editusername_transfer.text.toString().isEmpty()){
+                editusername_transfer.error = "Mohon diisi"
+                editusername_transfer.requestFocus()
+                return@setOnClickListener
+            } else if (editbalance_transfer.text.toString().isEmpty()){
+                editbalance_transfer.error = "Mohon diisi"
+                editbalance_transfer.requestFocus()
+                return@setOnClickListener
+            } else if(transfer.toInt() < 5000){
+                Toast.makeText(this, "Transfer saldo minimal Rp5.000", Toast.LENGTH_SHORT).show()
+            } else if(editusername_transfer.text.toString() == username.text.toString()){
                 AlertDialog.Builder(this@TransferSaldo)
                     .setMessage("Transaksi tidak dapat dilakukan")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    .setPositiveButton("Ok") { dialog, whichButton ->
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }
+                    .setNegativeButton("Kembali") { dialog, whichButton ->
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
                     }
                     .show()
-
-            }
-            else {
-                if (x.toInt() < 5000){
-                    //cek kalo dak memenuhi minimal transaksi
-                    Toast.makeText(this, "Transaksi minimal Rp 5000", Toast.LENGTH_SHORT).show()
+            } else {
+                if(transfer.toInt() > saldo?.toInt()!!){
+                    AlertDialog.Builder(this@TransferSaldo)
+                        .setMessage("Saldo Anda tidak cukup, silakan isi ulang saldo")
+                        .setPositiveButton("Top Up") { dialog, whichButton ->
+                            startActivity(Intent(this, TopUp::class.java))
+                        }
+                        .setNegativeButton("Kembali") { dialog, whichButton ->
+                            finish()
+                        }
+                        .show()
+                    Toast.makeText(this, "Saldo Anda tidak cukup", Toast.LENGTH_SHORT).show()
                 } else {
-                    val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
-                    transfer(username.toString(), x, editidnumber_transfer.text.toString())
+                    val username = editusername_transfer.text.toString()
+                    val filter = listUser.filter {
+                        it.username == username
+                    }
+
+                    val tipeTransaksi =2
+
+                    if(filter.isNullOrEmpty()){
+                        Toast.makeText(this, "Username tidak ditemukan", Toast.LENGTH_SHORT).show()
+
+                    }else{
+                        val id= filter[0].id
+                        transfer(tipeTransaksi, id)
+                    }
+
                 }
             }
+
         }
 
         btn_cancel_transfer.setOnClickListener(){
@@ -77,69 +107,84 @@ class TransferSaldo : AppCompatActivity() {
 
     }
 
-    fun transfer(username:String, jumlahTransfer:String, username_to:String){
-        val retrofit = RetrofitClient.instance
-        val api = retrofit.create(API::class.java)
-        val amount_transaksi = editbalance_transfer.text.toString()
-
-        api.transaksi(username, jumlahTransfer.toInt(), username_to).enqueue(
-
-            object : retrofit2.Callback<Response_Detail>{
-                override fun onFailure(call: Call<Response_Detail>, t: Throwable) {
-                    Toast.makeText(this@TransferSaldo, t.message, Toast.LENGTH_SHORT).show()
-                }
-
+    private fun transfer(tipetransaksi : Int, id : Int?){
+        ApiClient().getApiService(this).transaksi(tipetransaksi)
+            .enqueue(object : retrofit2.Callback<ResponseTransaksi>{
                 override fun onResponse(
-                    call: Call<Response_Detail>,
-                    response: Response<Response_Detail>
+                    call: Call<ResponseTransaksi>,
+                    response: Response<ResponseTransaksi>
                 ) {
-                    if (response.isSuccessful) {
-                        val message = response.body()?.message
-                        if (response.isSuccessful) {
-                            val message = response.body()?.message
-
-                            AlertDialog.Builder(this@TransferSaldo)
-                                .setMessage("Transaksi sebesar Rp$amount_transaksi berhasil")
-                                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                                    clearData()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                                }
-                                .show()
-
-                        } else{
-                            Toast.makeText(this@TransferSaldo, message , Toast.LENGTH_SHORT).show()
-                        }
+                    val resp = response.body()
+                    val transfer = editbalance_transfer.text.toString()
+                    val totalTransfer = editbalance_transfer.text.toString().replace(".","").toInt()
+                    if(response.isSuccessful){
+                        val a = resp?.id
+                            ApiClient().getApiService(this@TransferSaldo).transfer(totalTransfer, id, a!!)
+                                .enqueue(object : retrofit2.Callback<TransferItem>{
+                                    override fun onResponse(
+                                        call: Call<TransferItem>,
+                                        response: Response<TransferItem>
+                                    ) {
+                                        AlertDialog.Builder(this@TransferSaldo)
+                                            .setTitle("Transfer Saldo")
+                                            .setMessage("Transfer saldo sebesar Rp$transfer berhasil")
+                                            .setPositiveButton("Ok") { dialog, whichButton ->
+                                                startActivity(Intent(applicationContext, MainActivity::class.java))
+                                                finish()
+                                            }
+                                            .setNegativeButton("Tutup") { dialog, whichButton ->
+                                                startActivity(Intent(applicationContext, MainActivity::class.java))
+                                                finish()
+                                            }
+                                            .show()
+                                    }
+                                    override fun onFailure(call: Call<TransferItem>, t: Throwable) {
+                                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
+                                    }
+                                })
                     } else {
-                        Toast.makeText(this@TransferSaldo, response.message() , Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Transfer saldo sebesar Rp$transfer gagal", Toast.LENGTH_SHORT).show()
                     }
+                    print(response.body())
                 }
 
+                override fun onFailure(call: Call<ResponseTransaksi>, t: Throwable) {
+                    t.printStackTrace()
+                }
             }
+            )
+    }
 
-        )
+    private fun tampilUser(){
+        ApiClient().getApiService(this).filteruser()
+            .enqueue(object : retrofit2.Callback<List<FilterUser>>{
+                override fun onResponse(
+                    call: Call<List<FilterUser>>,
+                    response: Response<List<FilterUser>>
+                ) {
+                   if(response.isSuccessful){
+                        listUser.addAll(response.body()!!)
+                   }
+                }
 
+                override fun onFailure(call: Call<List<FilterUser>>, t: Throwable) {
+                }
+            })
+    }
+
+    fun getSaldo(){
+        sessionManager = SessionManager(this)
+        if(sessionManager.fetchAuthToken() == null){
+
+        } else {
+            val dataUser = sessionManager.getProfile()
+            saldo = dataUser.saldo
+            username.text = dataUser.username
+        }
     }
 
     fun clearData(){
-        editidnumber_transfer.text.clear()
-        editbalance_transfer.text?.clear()
-    }
-
-    fun nampilinSaldo(key : String?){
-        lateinit var myAPI: API
-        val retrofit = RetrofitClient.instance
-        myAPI = retrofit.create(API::class.java)
-
-        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
-
-            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
-                Toast.makeText(this@TransferSaldo, "Gagal", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
-                val a = response.body()?.balance
-                saldo_contoh.text = a.toString()
-            }
-        })
+        editusername_transfer.text.clear()
+        editbalance_transfer.setText("")
     }
 }

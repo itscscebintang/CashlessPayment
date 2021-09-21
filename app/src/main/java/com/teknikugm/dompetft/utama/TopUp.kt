@@ -1,20 +1,28 @@
 package com.teknikugm.dompetft.utama
 
-import android.app.AlertDialog
-import android.content.ContextWrapper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.retrofit.*
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.Currency
+import com.teknikugm.dompetft.API.SessionManager
+import com.teknikugm.dompetft.model.DataUser
+import com.teknikugm.dompetft.model.ResponseTopup
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_top_up.*
+import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import kotlin.random.Random
 
 class TopUp : AppCompatActivity() {
+
+    private lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_up)
@@ -24,72 +32,75 @@ class TopUp : AppCompatActivity() {
         topup_saldo.setDelimiter(false)
         topup_saldo.setSeparator(".")
 
-        btn_send_topup.setOnClickListener(){
-            val x = topup_saldo.text.toString().replace("Rp","").replace(".","")
+        sessionManager = SessionManager(this)
+        if (sessionManager.fetchAuthToken() == null) {
+        }
+        else {
+            val detailProfile = sessionManager.getProfile()
+            txtid.text = detailProfile.id
+        }
 
-            if(x.isEmpty()){
-                Toast.makeText(this, "Masukkan jumlah saldo Top Up", Toast.LENGTH_SHORT).show()
-            } else if(x.toInt() < 5000 ){
-                Toast.makeText(this, "Top up minimal Rp 5.000", Toast.LENGTH_SHORT).show()
-            } else{
-                doTopUp(x)
-                clearData()
+        btn_send_topup.setOnClickListener(){
+            val topupsaldo = topup_saldo.text.toString().replace(".","")
+
+            if(topup_saldo.text.toString().isEmpty()){
+                topup_saldo.error = "Mohon diisi"
+                topup_saldo.requestFocus()
+                return@setOnClickListener
+            } else if (topupsaldo.toInt() < 5000){
+                Toast.makeText(this, "Top up saldo minimal Rp5.000", Toast.LENGTH_SHORT).show()
+            } else {
+                topUp(topupsaldo.toInt(),txtid.text.toString().toInt())
             }
+
+        }
+
+        panah_topup.setOnClickListener(){
+            clearData()
+            finish()
         }
 
         btn_cancel_topup.setOnClickListener(){
             clearData()
             finish()
         }
-
-        panah_topup.setOnClickListener(){
-            finish()
-        }
-
     }
 
-    private fun doTopUp(jumlahTopUp:String){
-        val retrofit = RetrofitClient.instance
-        val api = retrofit.create(API::class.java)
+    private fun topUp(jumlahtopup :Int, iduser : Int){
 
-        val randomNumber = Random.nextInt(100,999)
-        val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
-        val amount_transaksi = topup_saldo.text.toString()
+//        val jumlahTopup = Currency.toRupiahFormat2(topup_saldo.text.toString().toInt()).replace("$","Rp").replace(",", ".")
+////        Currency.toRupiahFormat2(editbalance_transfer.text.toString().toInt()).replace("$","Rp").replace(",", ".")
 
-        api.topUpSaldo(jumlahTopUp.toInt(), username, randomNumber).enqueue(
-
-            object : retrofit2.Callback<Response_Topup>{
-                override fun onFailure(call: Call<Response_Topup>, t: Throwable) {
-                    Toast.makeText(this@TopUp, t.message, Toast.LENGTH_SHORT).show()
-                }
-
-                override fun onResponse(
-                    call: Call<Response_Topup>,
-                    response: Response<Response_Topup>
-                ) {
+        ApiClient().getApiService(this).topUpNEW(jumlahtopup,iduser)
+            .enqueue(object : Callback<ResponseTopup>{
+                override fun onResponse(call: Call<ResponseTopup>, response: Response<ResponseTopup>) {
                     if(response.isSuccessful){
-                        val message = response.body()?.message
                         if (response.isSuccessful){
-                            val message = response.body()?.message
-
+//                            Toast.makeText(this@TopUp, "Berhasil", Toast.LENGTH_SHORT).show()
+                            val jumlahTopup = topup_saldo.text.toString()
                             AlertDialog.Builder(this@TopUp)
-                                .setMessage("Permintaan top up sebesar Rp$amount_transaksi berhasil")
-                                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                                    clearData()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                                .setTitle("Top Up")
+                                .setMessage("Permintaan top up sebesar Rp$jumlahTopup berhasil")
+                                .setPositiveButton("Ok") { dialog, whichButton ->
+                                    finish()
+                                }
+                                .setNegativeButton("Kembali") { dialog, whichButton ->
+                                    finish()
                                 }
                                 .show()
                         }else{
-                            Toast.makeText(this@TopUp, message, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@TopUp, "Gagal", Toast.LENGTH_SHORT).show()
                         }
                     }else{
-                        Toast.makeText(this@TopUp, response.message(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TopUp, "Gagal", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-            }
+                override fun onFailure(call: Call<ResponseTopup>, t: Throwable) {
+                    Toast.makeText(this@TopUp, t.message, Toast.LENGTH_SHORT).show()
 
-        )
+                }
+            })
     }
 
     fun clearData(){

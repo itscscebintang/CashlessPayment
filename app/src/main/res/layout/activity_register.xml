@@ -54,33 +54,33 @@
                 android:layout_marginTop="50dp"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:backgroundTint="@color/birudongker"
-                    app:boxCornerRadiusBottomEnd="20dp"
-                    app:boxCornerRadiusBottomStart="20dp"
-                    app:boxCornerRadiusTopEnd="20dp"
-                    app:boxCornerRadiusTopStart="20dp"
-                    android:textColorHint="@color/hitam">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/LoginTextInputLayoutStyle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:backgroundTint="@color/birudongker"-->
+<!--                    app:boxCornerRadiusBottomEnd="20dp"-->
+<!--                    app:boxCornerRadiusBottomStart="20dp"-->
+<!--                    app:boxCornerRadiusTopEnd="20dp"-->
+<!--                    app:boxCornerRadiusTopStart="20dp"-->
+<!--                    android:textColorHint="@color/hitam">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editname_register"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/full_name"
-                        android:backgroundTint="@color/birudongker"
-                        android:textSize="16sp"
-                        android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp"
-                        android:inputType="textCapWords"
-                        android:maxLines="1">
-                    </com.google.android.material.textfield.TextInputEditText>
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/editname_register"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="@string/full_name"-->
+<!--                        android:backgroundTint="@color/birudongker"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textColor="@color/hitam"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:inputType="textCapWords"-->
+<!--                        android:maxLines="1">-->
+<!--                    </com.google.android.material.textfield.TextInputEditText>-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/LoginTextInputLayoutStyle"
@@ -142,35 +142,35 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/LoginTextInputLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:backgroundTint="@color/birudongker"
-                    app:boxCornerRadiusBottomEnd="20dp"
-                    app:boxCornerRadiusBottomStart="20dp"
-                    app:boxCornerRadiusTopEnd="20dp"
-                    app:boxCornerRadiusTopStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textColorHint="@color/hitam">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    style="@style/LoginTextInputLayoutStyle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:backgroundTint="@color/birudongker"-->
+<!--                    app:boxCornerRadiusBottomEnd="20dp"-->
+<!--                    app:boxCornerRadiusBottomStart="20dp"-->
+<!--                    app:boxCornerRadiusTopEnd="20dp"-->
+<!--                    app:boxCornerRadiusTopStart="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:textColorHint="@color/hitam">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editktm_register"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/nik_nim"
-                        android:backgroundTint="@color/birudongker"
-                        android:textSize="16sp"
-                        android:textColor="@color/hitam"
-                        android:layout_marginStart="5dp"
-                        android:inputType="text"
-                        android:maxLines="1">
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/editktm_register"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:hint="@string/nik_nim"-->
+<!--                        android:backgroundTint="@color/birudongker"-->
+<!--                        android:textSize="16sp"-->
+<!--                        android:textColor="@color/hitam"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1">-->
 
-                    </com.google.android.material.textfield.TextInputEditText>
+<!--                    </com.google.android.material.textfield.TextInputEditText>-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/LoginTextInputLayoutStyle"

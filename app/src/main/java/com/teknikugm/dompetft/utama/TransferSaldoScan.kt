@@ -1,26 +1,27 @@
 package com.teknikugm.dompetft.utama
 
 import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.ContextWrapper
 import android.content.Intent
-import android.os.AsyncTask
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.SessionManager
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.pembayaran.Response_Detail
-import com.teknikugm.dompetft.retrofit.*
+import com.teknikugm.dompetft.model.FilterUser
+import com.teknikugm.dompetft.model.ResponseTransaksi
+import com.teknikugm.dompetft.model.TransferItem
+import kotlinx.android.synthetic.main.activity_top_up.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo.*
 import kotlinx.android.synthetic.main.activity_transfer_saldo_scan.*
-import me.abhinay.input.CurrencySymbols
 import retrofit2.Call
 import retrofit2.Response
 
 class TransferSaldoScan : AppCompatActivity() {
 
     private var result : String?=null
+    private var listUser = mutableListOf<FilterUser>()
+    private lateinit var sessionManager : SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,118 +33,168 @@ class TransferSaldoScan : AppCompatActivity() {
         edit_amount_payqr.setDelimiter(false)
         edit_amount_payqr.setSeparator(".")
 
+        getSaldo()
+
         panah_tfscan.setOnClickListener(){
+            clearData()
+            finish()
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+        // ngambil username
         val x = intent.extras
         result = x?.getString("SCAN")
         txtuname_transferqr.text = result
 
-        val a = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "none")
-        nampilinSaldo(a)
+        tampiluser()
 
         btn_transfer_saldo_payqr.setOnClickListener(){
-            val x = edit_amount_payqr.text.toString().replace("Rp","").replace(".","")
+            val transfer = edit_amount_payqr.text.toString().replace(".","")
 
-            if (edit_amount_payqr.text.toString().isEmpty()){
-                Toast.makeText(this, "Masukkan jumlah saldo yang akan ditransfer", Toast.LENGTH_SHORT).show()
-            }
-            else if(saldocontoh_payqr.text.toString().toInt() < x.toInt()){
-                AlertDialog.Builder(this@TransferSaldoScan)
-                    .setMessage("Saldo Anda tidak cukup")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                    }
-                    .show()
-            }
-            else if(a.toString() == txtuname_transferqr.text.toString()) {
+            if(edit_amount_payqr.text.toString().isEmpty()){
+                edit_amount_payqr.error = "Mohon diisi"
+                edit_amount_payqr.requestFocus()
+                return@setOnClickListener
+            } else if(transfer.toInt() < 5000){
+                Toast.makeText(this, "Transfer saldo minimal Rp5.000", Toast.LENGTH_SHORT).show()
+            } else if(usernamescan.text == txtuname_transferqr.text){
                 AlertDialog.Builder(this@TransferSaldoScan)
                     .setMessage("Transaksi tidak dapat dilakukan")
-                    .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                        clearData()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                    .setPositiveButton("Ok") { dialog, whichButton ->
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }
+                    .setNegativeButton("Kembali") { dialog, whichButton ->
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
                     }
                     .show()
-            } else {
-                if (x.toInt() < 5000) {
-                    Toast.makeText(this, "Transaksi minimal Rp 5.000", Toast.LENGTH_SHORT).show()
-                } else {
-                    val username = getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString((Constant.username), "none")
-                    transfer(username.toString(), x, txtuname_transferqr.text.toString() )
+            } else if (transfer.toInt() > saldo.text.toString().toInt()){
+                AlertDialog.Builder(this@TransferSaldoScan)
+                    .setMessage("Saldo Anda tidak cukup, silakan isi ulang saldo")
+                    .setPositiveButton("Top Up") { dialog, whichButton ->
+                        startActivity(Intent(this, TopUp::class.java))
+                    }
+                    .setNegativeButton("Kembali") { dialog, whichButton ->
+                        finish()
+                    }
+                    .show()
+            }else {
+                val username = result
+                val filter = listUser.filter{
+                    it.username == username }
+                val tipeTransaksi =2
+
+                if(filter.isNullOrEmpty()){
+
+                    Toast.makeText(this, "Username tidak ditemukan", Toast.LENGTH_SHORT).show()
+
+                }else{
+                    val id= filter[0].id
+                    transfer(tipeTransaksi, id)
                 }
             }
         }
 
         btn_cancel_tfscan.setOnClickListener(){
-            startActivity(Intent(this, MainActivity::class.java))
             clearData()
+            finish()
+            startActivity(Intent(this, MainActivity::class.java))
         }
-
     }
 
-    fun transfer(username:String, jumlahTransfer:String, username_to:String){
+    fun transfer(tipetransaksi : Int, id : Int?){
+        ApiClient().getApiService(this).transaksi(tipetransaksi)
+            .enqueue(object : retrofit2.Callback<ResponseTransaksi>{
+                override fun onResponse(
+                    call: Call<ResponseTransaksi>,
+                    response: Response<ResponseTransaksi>
+                ) {
 
-        val retrofit = RetrofitClient.instance
-        val api = retrofit.create(API::class.java)
-        val amount_transaksi = edit_amount_payqr.text.toString()
+                    val c = response.body()?.id
+                    val transfer = edit_amount_payqr.text.toString().replace(".","").toInt()
+                    val totalTransfer = edit_amount_payqr.text.toString()
 
-        api.transaksi(username, jumlahTransfer.toInt(), username_to).enqueue(
+                    if(response.isSuccessful){
+                        ApiClient().getApiService(this@TransferSaldoScan).transfer(transfer, id, c!!)
+                            .enqueue(object : retrofit2.Callback<TransferItem>{
 
-            object : retrofit2.Callback<Response_Detail> {
-                override fun onFailure(call: Call<Response_Detail>, t: Throwable) {
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                    Toast.makeText(this@TransferSaldoScan, t.message, Toast.LENGTH_SHORT).show()
+                                override fun onResponse(call: Call<TransferItem>, response: Response<TransferItem>){
+
+                                    AlertDialog.Builder(this@TransferSaldoScan)
+                                        .setMessage("Transfer saldo sebesar Rp$totalTransfer berhasil")
+                                        .setPositiveButton("Ok") { dialog, whichButton ->
+                                            startActivity(Intent(this@TransferSaldoScan, MainActivity::class.java))
+                                            finish()
+                                        }
+                                        .setNegativeButton("Tutup") { dialog, whichButton ->
+                                            startActivity(Intent(this@TransferSaldoScan, MainActivity::class.java))
+                                            finish()
+                                        }
+                                        .show()
+                                }
+
+                                override fun onFailure(call: Call<TransferItem>, t: Throwable) {
+                                    Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
+                                }
+                            })
+
+                    } else {
+
+                        AlertDialog.Builder(this@TransferSaldoScan)
+                            .setMessage("Transfer saldo sebesar Rp$totalTransfer gagal")
+                            .setPositiveButton("Ok") { dialog, whichButton ->
+                                finish()
+                                startActivity(Intent(this@TransferSaldoScan, MainActivity::class.java))
+                            }
+                            .setNegativeButton("Tutup") { dialog, whichButton ->
+                                finish()
+                                startActivity(Intent(this@TransferSaldoScan, MainActivity::class.java))
+                            }
+                            .show()
+
+                    }
+                    print(response.body()!!)
                 }
 
+                override fun onFailure(call: Call<ResponseTransaksi>, t: Throwable) {
+                    t.printStackTrace()
+                }
+
+            })
+    }
+
+    fun tampiluser(){
+        ApiClient().getApiService(this).filteruser()
+            .enqueue(object : retrofit2.Callback<List<FilterUser>>{
                 override fun onResponse(
-                    call: Call<Response_Detail>,
-                    response: Response<Response_Detail>
+                    call: Call<List<FilterUser>>,
+                    response: Response<List<FilterUser>>
                 ) {
-                    if (response.isSuccessful) {
-                        val message = response.body()?.message
-                        if (response.isSuccessful) {
-                            val message = response.body()?.message
-
-                            AlertDialog.Builder(this@TransferSaldoScan)
-                                .setMessage("Transaksi sebesar Rp$amount_transaksi berhasil")
-                                .setPositiveButton(android.R.string.ok) { dialog, whichButton ->
-                                    clearData()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                                }
-                                .show()
-
-                        } else{
-                            Toast.makeText(this@TransferSaldoScan, message , Toast.LENGTH_SHORT).show()
-                        }
-                    } else {
-                        Toast.makeText(this@TransferSaldoScan, response.message() , Toast.LENGTH_SHORT).show()
+                    if(response.isSuccessful){
+                        listUser.addAll(response.body()!!)
                     }
                 }
-            }
-        )
+
+                override fun onFailure(call: Call<List<FilterUser>>, t: Throwable) {
+                }
+
+            })
+    }
+
+    fun getSaldo(){
+        sessionManager = SessionManager(this)
+        if (sessionManager.fetchAuthToken() == null) {
+        }
+        else {
+            val detailProfile = sessionManager.getProfile()
+            saldo.text = detailProfile.saldo
+            usernamescan.text = detailProfile.username
+        }
     }
 
     fun clearData(){
         txtuname_transferqr.text = ""
-        edit_amount_payqr.text?.clear()
-    }
-
-    fun nampilinSaldo(key : String?){
-        lateinit var myAPI: API
-        val retrofit = RetrofitClient.instance
-        myAPI = retrofit.create(API::class.java)
-
-        myAPI.getsaldo(key).enqueue(object : retrofit2.Callback<ResponseSaldo>{
-
-            override fun onFailure(call: Call<ResponseSaldo>, t: Throwable) {
-                Toast.makeText(this@TransferSaldoScan, "Gagal", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ResponseSaldo>, response: Response<ResponseSaldo>) {
-                val a = response.body()?.balance
-                saldocontoh_payqr.text = a.toString()
-            }
-        })
+        edit_amount_payqr.setText("")
     }
 }

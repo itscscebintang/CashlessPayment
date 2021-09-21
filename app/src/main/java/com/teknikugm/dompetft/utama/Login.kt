@@ -1,84 +1,99 @@
 package com.teknikugm.dompetft.utama
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.widget.Toast
-import androidx.core.content.edit
+import androidx.appcompat.app.AppCompatActivity
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.retrofit.*
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.SessionManager
+import com.teknikugm.dompetft.model.LoginRequest
+import com.teknikugm.dompetft.model.ResponseLogin
 import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
-class Login : AppCompatActivity() {
+class Login : AppCompatActivity(){
 
-    lateinit var myAPI: API
-    lateinit var preferences: SharedPreferences
+    private lateinit var sessionManager: SessionManager
+    private lateinit var apiClient: ApiClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        txtsignup.setOnClickListener(){
-            startActivity(Intent(this, Register::class.java))
-        }
+        sessionCheck()
+        apiClient = ApiClient()
+        sessionManager = SessionManager(this)
 
-        val retrofit = RetrofitClient.instance
-        myAPI = retrofit.create(API::class.java)
-        preferences = getSharedPreferences(Constant.PREFS_NAME, Context.MODE_PRIVATE)
+        btn_login.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
 
-        btn_login.setOnClickListener {
-            if (editusername_login.text.toString().isEmpty()) {
-                editusername_login.error = "Masukkan Username"
+            val us = editusername_login.text.toString().trim()
+            val pas = editpassword_login.text.toString()
+
+            if (us.isEmpty()){
+                editusername_login.error = "Mohon diisi"
                 editusername_login.requestFocus()
                 return@setOnClickListener
-            } else if (
-                editpassword_login.text.toString().isEmpty()) {
-                editpassword_login.error = "Masukkan Password"
+            }
+            if (pas.isEmpty()){
+                editpassword_login.error = "Mohon diisi"
                 editpassword_login.requestFocus()
                 return@setOnClickListener
-            } else
-                cekLogin(editusername_login.text.toString(), editpassword_login.text.toString())
+            }
 
+            val userlogin = LoginRequest(username = us,password = pas)
+
+            apiClient.getApiService(this).login(userlogin)
+                .enqueue(object : Callback<ResponseLogin> {
+                    override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
+                        Toast.makeText(this@Login,"Gagal Login\n"+t.toString(),Toast.LENGTH_LONG).show()
+                        Log.d("Coba",t.toString())
+                    }
+
+                    override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
+                        val token = response.body()?.key
+
+                        if (token != null) {
+                            sessionManager.saveAuthToken(token)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this@Login,"Username atau password salah",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+        }
+
+        txtsignup.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
             finish()
         }
     }
 
-    private fun cekLogin(username: String, password: String) {
+    private fun sessionCheck(){
+        sessionManager = SessionManager(this)
+        if (sessionManager.fetchAuthToken() != null){
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
 
-        myAPI.loginUser(username, password).enqueue(object : retrofit2.Callback<ResponseLogin> {
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
 
-                override fun onFailure(call: retrofit2.Call<ResponseLogin>, t: Throwable) {
-                    Toast.makeText(
-                        this@Login,
-                        "Username atau Password salah!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Tekan tombol kembali sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
 
-                override fun onResponse(
-                    call: retrofit2.Call<ResponseLogin>,
-                    response: Response<ResponseLogin>
-                ) {
-                    if (response.isSuccessful) {
-                        val data = response.body()?.data
-                        preferences.edit(true) {
-                            putString(Constant.name, data?.namaUser)
-                            putString(Constant.password, data?.passwordUser)
-                            putString(Constant.username, data?.kodeUser)
-                            putString(Constant.balance, data?.saldo)
-                            putString(Constant.email, data?.email)
-                            putString(Constant.nik, data?.nik)
-                        }
-                        val main = Intent(this@Login, MainActivity::class.java)
-                        startActivity(main)
-                    } else {
-                        Toast.makeText(this@Login, response.message(), Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            })
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 }

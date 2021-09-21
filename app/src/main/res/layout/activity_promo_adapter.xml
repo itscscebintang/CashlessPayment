@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pembayaran.PromoAdapter">
+    tools:context=".adapter.PromoAdapter">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -83,44 +83,15 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    android:gravity="end">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Minimal Belanja : Rp"
-                        android:textColor="@color/hitam"
-                        android:textSize="14sp">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/min_belanja"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:hint="0"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/hitam"
-                        android:textSize="14sp">
-
-                    </TextView>
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/cheat_minBelanja"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:textSize="0sp">-->
-
-<!--                    </TextView>-->
-
-                </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/idpromo"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="3dp"-->
+<!--                    android:fontFamily="@font/poppins_medium"-->
+<!--                    android:hint="0"-->
+<!--                    android:textColor="@color/hitam"-->
+<!--                    android:textSize="14sp"/>-->
 
             </LinearLayout>
 

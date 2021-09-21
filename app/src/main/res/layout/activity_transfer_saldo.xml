@@ -104,8 +104,20 @@
                 android:fontFamily="@font/poppins_medium">
             </TextView>
 
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/username"
+                android:textColor="@color/hitam"
+                android:textSize="0sp"
+                android:fontFamily="@font/poppins_medium">
+            </TextView>
+
             <EditText
-                android:id="@+id/editidnumber_transfer"
+                android:id="@+id/editusername_transfer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -127,8 +139,22 @@
                 android:textColor="@color/hitam"
                 android:textSize="18sp"
                 android:fontFamily="@font/poppins_medium"
-                android:layout_below="@+id/editidnumber_transfer">
+                android:layout_below="@+id/editusername_transfer">
             </TextView>
+
+<!--            <EditText-->
+<!--                android:id="@+id/editbalance_transfer"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                android:hint="@string/min_rp5_000"-->
+<!--                android:inputType="number"-->
+<!--                android:backgroundTint="@color/birudongker"-->
+<!--                android:layout_below="@id/txtbalance"-->
+<!--                android:maxLines="1"-->
+<!--                />-->
 
             <me.abhinay.input.CurrencyEditText
                 android:id="@+id/editbalance_transfer"
@@ -142,7 +168,6 @@
                 android:layout_below="@id/txtbalance"
                 android:inputType="number"
                 android:maxLines="1">
-
             </me.abhinay.input.CurrencyEditText>
 
         </RelativeLayout>

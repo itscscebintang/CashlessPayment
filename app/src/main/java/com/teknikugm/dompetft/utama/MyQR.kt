@@ -1,6 +1,5 @@
 package com.teknikugm.dompetft.utama
 
-import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -10,19 +9,32 @@ import android.util.Log
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
+import com.teknikugm.dompetft.API.ApiClient
+import com.teknikugm.dompetft.API.SessionManager
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.retrofit.Constant
 import kotlinx.android.synthetic.main.activity_my_q_r.*
 
 class MyQR : AppCompatActivity() {
+
+    private lateinit var apiClient : ApiClient
+    private lateinit var sessionManager: SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_q_r)
 
-        val username = this.getSharedPreferences(Constant.PREFS_NAME, ContextWrapper.MODE_PRIVATE)?.getString(Constant.username, "None").toString()
-        if (username.isNotBlank()){
-            val bitmap = generateQRCode(username)
-            img_myqr.setImageBitmap(bitmap)
+        apiClient = ApiClient()
+        sessionManager = SessionManager(this)
+
+        if(sessionManager.fetchAuthToken() == null){}
+        else{
+            val profile = sessionManager.getProfile()
+            val username = profile.username
+
+            if(username != null){
+                val bitmap = generateQRCode(username)
+                img_myqr.setImageBitmap(bitmap)
+            }
         }
 
         panah_myqr.setOnClickListener(){

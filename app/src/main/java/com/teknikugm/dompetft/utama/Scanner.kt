@@ -1,4 +1,4 @@
-package com.teknikugm.dompetft.pembayaran
+package com.teknikugm.dompetft.utama
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +11,6 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.teknikugm.dompetft.R
-import com.teknikugm.dompetft.utama.MainActivity
 import kotlinx.android.synthetic.main.activity_scanner.*
 import java.lang.Exception
 
@@ -54,7 +53,7 @@ class Scanner : AppCompatActivity() {
                  try {
                      val a = it.text
                      if (a!= null && a!==""){
-                         val i = Intent(this,TransaksiPesanan::class.java)
+                         val i = Intent(this, TransaksiPesanan::class.java)
                          i.putExtra(key,a)
                          startActivity(i)
                      }

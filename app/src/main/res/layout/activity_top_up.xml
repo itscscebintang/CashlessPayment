@@ -100,6 +100,18 @@
                 android:layout_toEndOf="@id/txtvoucher">
             </TextView>
 
+            <TextView
+                android:id="@+id/txtid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="0sp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/putih"
+                android:fontFamily="@font/poppins_semi"
+                android:layout_toEndOf="@id/txtcode">
+            </TextView>
+
         <RelativeLayout
             android:id="@+id/background"
             android:layout_width="wrap_content"
@@ -122,6 +134,17 @@
                 android:maxLines="1"
                 android:layout_marginEnd="20dp">
             </me.abhinay.input.CurrencyEditText>
+<!--            <EditText-->
+<!--                android:id="@+id/topup_saldo"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="number"-->
+<!--                android:backgroundTint="@color/putih"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginEnd="15dp"-->
+<!--                android:hint="Min. Rp5.000">-->
+
+<!--            </EditText>-->
 
         </RelativeLayout>
 

@@ -89,4 +89,6 @@
     <string name="or">Or</string>
     <string name="insert_your_friend_s_username_here">Insert your Friend\'s Username Here!</string>
     <string name="using_username">Send Balance by Using Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

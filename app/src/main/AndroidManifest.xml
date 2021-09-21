@@ -16,13 +16,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".utama.TransferSaldoScan">
+        <activity android:name="com.teknikugm.dompetft.utama.TransferSaldoScan">
         </activity>
-        <activity android:name=".utama.Scanner_Transfer" />
-        <activity android:name=".pembayaran.TransaksiPesanan" />
-        <activity android:name=".pembayaran.Scanner" />
+        <activity android:name="com.teknikugm.dompetft.utama.Scanner_Transfer" />
+        <activity android:name="com.teknikugm.dompetft.utama.TransaksiPesanan" />
+        <activity android:name="com.teknikugm.dompetft.utama.Scanner" />
         <activity
-            android:name=".pembayaran.Promo"
+            android:name="com.teknikugm.dompetft.utama.Promo"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
@@ -30,23 +30,23 @@
             android:stateNotNeeded="true"
             tools:replace="android:screenOrientation" />
         <activity
-            android:name=".utama.MyQR"
+            android:name="com.teknikugm.dompetft.utama.MyQR"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".utama.TransferSaldo"
+            android:name="com.teknikugm.dompetft.utama.TransferSaldo"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".utama.TopUp"
+            android:name="com.teknikugm.dompetft.utama.TopUp"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".utama.Register"
+            android:name="com.teknikugm.dompetft.utama.Register"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".utama.Login"
+            android:name="com.teknikugm.dompetft.utama.Login"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".utama.SplashScreen"
+            android:name="com.teknikugm.dompetft.utama.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".utama.MainActivity"
+            android:name="com.teknikugm.dompetft.utama.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

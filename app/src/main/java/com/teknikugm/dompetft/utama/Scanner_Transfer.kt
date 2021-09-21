@@ -75,11 +75,7 @@ class Scanner_Transfer : AppCompatActivity() {
         scannerView.setOnClickListener {
             codeScanner.startPreview()
         }
-
-
     }
-
-
 
     override fun onResume() {
         super.onResume()
