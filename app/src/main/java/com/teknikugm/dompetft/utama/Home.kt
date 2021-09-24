@@ -1,6 +1,5 @@
 package com.teknikugm.dompetft.utama
 
-import android.R.attr.x
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,7 +12,6 @@ import com.teknikugm.dompetft.API.Currency
 import com.teknikugm.dompetft.API.SessionManager
 import com.teknikugm.dompetft.R
 import kotlinx.android.synthetic.main.activity_home.*
-
 
 class Home : Fragment() {
 
@@ -28,7 +26,6 @@ class Home : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_home, container, false)
         return view
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,14 +41,11 @@ class Home : Fragment() {
                 txtsaldo_home.text = Currency.toRupiahFormat2(saldonew!!.toInt()).replace(
                     "$",
                     ""
-                ).replace(",", ".")
+                ).replace(",", ".").replace("Rp", "")
             }
         } catch (e: NullPointerException) {
             println("NullPointerException thrown!")
         }
-
-
-
 
         Log.d("pb", progress_Bar.toString())
         print(progress_Bar.toString())
@@ -78,7 +72,7 @@ class Home : Fragment() {
                 txtsaldo_home.text= Currency.toRupiahFormat2(profile?.saldo!!.toInt()).replace(
                     "$",
                     ""
-                ).replace(",", ".")
+                ).replace(",", ".").replace("Rp", "")
             }
             swipe_refresh.isRefreshing= false
         }

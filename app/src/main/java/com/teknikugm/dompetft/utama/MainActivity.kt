@@ -57,8 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         }).start()
 
-
-
         if (ContextCompat.checkSelfPermission(this@MainActivity,
                 Manifest.permission.CAMERA) !==
             PackageManager.PERMISSION_GRANTED) {

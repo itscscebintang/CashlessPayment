@@ -147,8 +147,8 @@ class TransaksiPesanan : AppCompatActivity() {
                         val saldoTerkini = saldo?.toInt()!! - totalBayar!!
                         jumlahPromo.text = potongandiskon.toString()
 
-                        val sadoSekarang = Currency.toRupiahFormat2(saldoTerkini).replace("$","").replace(",",".")
-                        val totalbayar = Currency.toRupiahFormat2(totalBayar!!).replace("$","").replace(",",".")
+                        val sadoSekarang = Currency.toRupiahFormat2(saldoTerkini).replace("$","").replace(",",".").replace("Rp", "")
+                        val totalbayar = Currency.toRupiahFormat2(totalBayar!!).replace("$","").replace(",",".").replace("Rp", "")
 
                         AlertDialog.Builder(this@TransaksiPesanan)
                             .setTitle("Transaksi pesanan sebesar Rp$totalbayar berhasil")
