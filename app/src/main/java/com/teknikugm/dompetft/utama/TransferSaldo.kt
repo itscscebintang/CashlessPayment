@@ -21,7 +21,6 @@ class TransferSaldo : AppCompatActivity() {
     private var listUser = mutableListOf<FilterUser>()
     private lateinit var sessionManager : SessionManager
     private var saldo : String? = null
-    private var transfer : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +56,7 @@ class TransferSaldo : AppCompatActivity() {
                 Toast.makeText(this, "Transfer saldo minimal Rp5.000", Toast.LENGTH_SHORT).show()
             } else if(editusername_transfer.text.toString() == username.text.toString()){
                 AlertDialog.Builder(this@TransferSaldo)
+                    .setTitle("Transfer Saldo")
                     .setMessage("Transaksi tidak dapat dilakukan")
                     .setPositiveButton("Ok") { dialog, whichButton ->
                         startActivity(Intent(this, MainActivity::class.java))
@@ -70,6 +70,7 @@ class TransferSaldo : AppCompatActivity() {
             } else {
                 if(transfer.toInt() > saldo?.toInt()!!){
                     AlertDialog.Builder(this@TransferSaldo)
+                        .setTitle("Transfer Saldo")
                         .setMessage("Saldo Anda tidak cukup, silakan isi ulang saldo")
                         .setPositiveButton("Top Up") { dialog, whichButton ->
                             startActivity(Intent(this, TopUp::class.java))
@@ -114,11 +115,15 @@ class TransferSaldo : AppCompatActivity() {
                     call: Call<ResponseTransaksi>,
                     response: Response<ResponseTransaksi>
                 ) {
+
                     val resp = response.body()
                     val transfer = editbalance_transfer.text.toString()
                     val totalTransfer = editbalance_transfer.text.toString().replace(".","").toInt()
+
                     if(response.isSuccessful){
+
                         val a = resp?.id
+
                             ApiClient().getApiService(this@TransferSaldo).transfer(totalTransfer, id, a!!)
                                 .enqueue(object : retrofit2.Callback<TransferItem>{
                                     override fun onResponse(

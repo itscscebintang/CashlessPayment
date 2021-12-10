@@ -68,15 +68,12 @@ class TopUp : AppCompatActivity() {
 
     private fun topUp(jumlahtopup :Int, iduser : Int){
 
-//        val jumlahTopup = Currency.toRupiahFormat2(topup_saldo.text.toString().toInt()).replace("$","Rp").replace(",", ".")
-////        Currency.toRupiahFormat2(editbalance_transfer.text.toString().toInt()).replace("$","Rp").replace(",", ".")
-
         ApiClient().getApiService(this).topUpNEW(jumlahtopup,iduser)
             .enqueue(object : Callback<ResponseTopup>{
+
                 override fun onResponse(call: Call<ResponseTopup>, response: Response<ResponseTopup>) {
                     if(response.isSuccessful){
                         if (response.isSuccessful){
-//                            Toast.makeText(this@TopUp, "Berhasil", Toast.LENGTH_SHORT).show()
                             val jumlahTopup = topup_saldo.text.toString()
                             AlertDialog.Builder(this@TopUp)
                                 .setTitle("Top Up")

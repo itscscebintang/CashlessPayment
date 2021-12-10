@@ -41,7 +41,6 @@ class TransaksiPesanan : AppCompatActivity() {
 
         val x = intent.extras
         result = x?.getString(key)
-        val isi_pesanan = result
 
         // untuk ngambil saldo
         sessionManager = SessionManager(this)
@@ -78,8 +77,8 @@ class TransaksiPesanan : AppCompatActivity() {
         btn_pay_pesanan.setOnClickListener(){
             if (saldo!!.toInt() < responScan1.jumlahPesanan!!.toInt()){
                 AlertDialog.Builder(this)
-                    .setTitle("Saldo Anda tidak cukup")
-                    .setMessage("Isi ulang saldo Anda sekarang")
+                    .setTitle("Transaksi Pesanan")
+                    .setMessage("Saldo Anda tidak cukup, silakan isi ulang saldo")
                     .setPositiveButton("Top Up") { dialog, whichButton ->
                         startActivity(Intent(this, TopUp::class.java))
                     }
@@ -147,12 +146,12 @@ class TransaksiPesanan : AppCompatActivity() {
                         val saldoTerkini = saldo?.toInt()!! - totalBayar!!
                         jumlahPromo.text = potongandiskon.toString()
 
-                        val sadoSekarang = Currency.toRupiahFormat2(saldoTerkini).replace("$","").replace(",",".").replace("Rp", "")
+//                        val sadoSekarang = Currency.toRupiahFormat2(saldoTerkini).replace("$","").replace(",",".").replace("Rp", "")
                         val totalbayar = Currency.toRupiahFormat2(totalBayar!!).replace("$","").replace(",",".").replace("Rp", "")
 
                         AlertDialog.Builder(this@TransaksiPesanan)
-                            .setTitle("Transaksi pesanan sebesar Rp$totalbayar berhasil")
-                            .setMessage("Saldo Anda sekarang Rp$sadoSekarang")
+                            .setTitle("Transaksi Pesanan ")
+                            .setMessage("Transaksi sebesar Rp$totalbayar berhasil")
                             .setPositiveButton("Ok") { dialog, whichButton ->
                                 startActivity(Intent(this@TransaksiPesanan, MainActivity::class.java))
                             }
@@ -168,14 +167,14 @@ class TransaksiPesanan : AppCompatActivity() {
                                     response: Response<BayarItem>
                                 ) {
                                     ApiClient().getApiService(this@TransaksiPesanan)
-                                    Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
+//                                    Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
                                 }
 
                                 override fun onFailure(call: Call<BayarItem>, t: Throwable) {
                                     Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
                                 }
                             })
-                        Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
 
                     } else {
                         Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()

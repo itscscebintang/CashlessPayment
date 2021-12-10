@@ -59,6 +59,7 @@ class TransferSaldoScan : AppCompatActivity() {
                 Toast.makeText(this, "Transfer saldo minimal Rp5.000", Toast.LENGTH_SHORT).show()
             } else if(usernamescan.text == txtuname_transferqr.text){
                 AlertDialog.Builder(this@TransferSaldoScan)
+                    .setTitle("Transfer Saldo")
                     .setMessage("Transaksi tidak dapat dilakukan")
                     .setPositiveButton("Ok") { dialog, whichButton ->
                         startActivity(Intent(this, MainActivity::class.java))
@@ -71,6 +72,7 @@ class TransferSaldoScan : AppCompatActivity() {
                     .show()
             } else if (transfer.toInt() > saldo.text.toString().toInt()){
                 AlertDialog.Builder(this@TransferSaldoScan)
+                    .setTitle("Transfer Saldo")
                     .setMessage("Saldo Anda tidak cukup, silakan isi ulang saldo")
                     .setPositiveButton("Top Up") { dialog, whichButton ->
                         startActivity(Intent(this, TopUp::class.java))
@@ -122,6 +124,7 @@ class TransferSaldoScan : AppCompatActivity() {
                                 override fun onResponse(call: Call<TransferItem>, response: Response<TransferItem>){
 
                                     AlertDialog.Builder(this@TransferSaldoScan)
+                                        .setTitle("Transfer Saldo")
                                         .setMessage("Transfer saldo sebesar Rp$totalTransfer berhasil")
                                         .setPositiveButton("Ok") { dialog, whichButton ->
                                             startActivity(Intent(this@TransferSaldoScan, MainActivity::class.java))
@@ -142,6 +145,7 @@ class TransferSaldoScan : AppCompatActivity() {
                     } else {
 
                         AlertDialog.Builder(this@TransferSaldoScan)
+                            .setTitle("Transfer Saldo")
                             .setMessage("Transfer saldo sebesar Rp$totalTransfer gagal")
                             .setPositiveButton("Ok") { dialog, whichButton ->
                                 finish()

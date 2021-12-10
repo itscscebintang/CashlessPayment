@@ -16,8 +16,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 class Home : Fragment() {
 
     private lateinit var sessionManager: SessionManager
-    private var i = 0
-    private val handler = Handler()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,27 +74,5 @@ class Home : Fragment() {
             }
             swipe_refresh.isRefreshing= false
         }
-    }
-
-    fun getSaldo(){
-        sessionManager = SessionManager(this.context!!)
-        if (sessionManager.fetchAuthToken() == null) {
-        }
-        else {
-            val activity: MainActivity = activity as MainActivity
-            val profile = activity.getProfile()
-            val saldonew = profile?.saldo
-            txtsaldo_home.text = saldonew
-
-        }
-    }
-
-
-    fun showLoading(){
-        progress_Bar.visibility
-    }
-
-    fun hideLoading(){
-        progress_Bar.setVisibility(View.GONE)
     }
 }
